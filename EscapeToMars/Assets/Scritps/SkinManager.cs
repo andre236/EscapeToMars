@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class SkinManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] _skinsPrefabs;
+    public int CurrentSkinIndex { get; private set; } = 0;
+
+    public GameObject[] SkinsPrefabs;
 
     public static SkinManager instance;
 
+
     void Awake()
     {
-       if(instance == null && WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 1)
+       if(instance == null)
         {
             instance = this;
         }
@@ -21,10 +23,11 @@ public class SkinManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
- 
-    public void EquipCustom()
-    {
 
+ 
+    public void EquipCustom(int indexSkin)
+    {
+        CurrentSkinIndex = indexSkin;
     }
 
     public void RedeemSkin()

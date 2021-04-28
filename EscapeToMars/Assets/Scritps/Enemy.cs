@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour {
     public int NextPosition { get; set; } = 1;
 
     private void Awake() {
-        ReferenceGameObjects();
+        StartCoroutine("CooldownToReference");
     }
 
     void Start() {
@@ -76,17 +76,13 @@ public class Enemy : MonoBehaviour {
         
     }
 
-    void ChangingSprite()
-    {
-
-    }
 
     void Die() {
         _currentAnim.SetBool("isDying", true);
         AudioManager.instance.GetSoundEffect(4);
         Destroy(_enemyCollider);
         Destroy(_pointLight2D);
-        CooldownDying();
+        StartCoroutine("CooldownDying");
 
 
     }
@@ -102,11 +98,14 @@ public class Enemy : MonoBehaviour {
         
     }
 
-
-
     IEnumerator CooldownDying() {
         yield return new WaitForSeconds(1.0f);
         Destroy(this.gameObject);
     }
 
+    IEnumerator CooldownToReference()
+    {
+        yield return new WaitForSeconds(0.8f);
+        ReferenceGameObjects();
+    }
 }
