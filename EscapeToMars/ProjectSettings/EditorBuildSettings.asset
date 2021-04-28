@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/MAIN_SCENE.unity
+    guid: f9036698cd0f0a741b3f97735bbc6549
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/SELECT_MAP.unity
+    guid: 45aacf4608889d041ae1b480c9d75883
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/SELECT_SKIN.unity
+    guid: cc7d4f7c5e0f1164a97b2f20609d4b98
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level1.unity
+    guid: 07b0aec2f81279043a6a0e98e94e696a
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level2.unity
+    guid: a9347c55ce221eb4cb3ff57b0dc198b9
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level3.unity
+    guid: a95b69e26cb690e4fb129e751d912f23
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level4.unity
+    guid: 41f482ccbeb686a4db089ff0f34dde10
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level5.unity
+    guid: 8cf42fd9856680544add29a8105eb4a5
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level6.unity
+    guid: 8ce4b7e09ea8e524981d12569fa68262
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level7.unity
+    guid: 10bfe0b9fac0aa9459b7f3f591b71c6a
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level8.unity
+    guid: eed1d193e6587284199f5689011ca1c3
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level9.unity
+    guid: 3c70c91938bd6f642898e3b8a9bdcfb0
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level10.unity
+    guid: b7d40427175364f49b3635489dff3f97
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level11.unity
+    guid: a44509273e3bd7e4595e206332ddba3c
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level12.unity
+    guid: ad1ef94a36c577b4e984eaa36c37edb0
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level13.unity
+    guid: a6f5a14f37cc3874ead634323a5a5c35
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level14.unity
+    guid: 8193dd7ced25c254ea77cd4763edc312
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level15.unity
+    guid: bde4a04f436c8c741aa45b7a026e3165
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level16.unity
+    guid: 7c5c755ddd8b6674b8de02bc9215fed7
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level17.unity
+    guid: f6e38f8a7d2ca1944a0d06cd187f6d93
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level18.unity
+    guid: c9982ddfd20a3e84ca048c99bd78c8a3
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level19.unity
+    guid: 11f7ff7efee3f1d4fb37b50b8a85b795
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level20.unity
+    guid: ded516f074e5d9d4189eea897425e40b
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level21.unity
+    guid: 19646130e76ea824a9665bb91b2c9c2d
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level22.unity
+    guid: 95a4041a6068f414ba3717a29f6c1ec3
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level23.unity
+    guid: b07c4ceac0c5eaf49b68c212016b4204
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level24.unity
+    guid: 88010f74dbe165e49bdaed3f767b4cab
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level25.unity
+    guid: ed0558fbf1c0adf4494619b44619847b
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level26.unity
+    guid: 752d96b191bd75b4c85c891133d1a838
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level27.unity
+    guid: c1f981cd2f9aab74d9b99a34876752ee
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level28.unity
+    guid: e320cf880647b4f4a83e0735862c7914
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level29.unity
+    guid: 38d31ba45f37d1f4bbf2f95f33443d87
+  - enabled: 1
+    path: Assets/Scenes/Finish Scene/Level30.unity
+    guid: a241c72c5221eb449a2aceee29d546cf
+  m_configObjects: {}
