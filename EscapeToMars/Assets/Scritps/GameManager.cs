@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
     public void GetData() {
         if (WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0) {
             _initialPosition = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Transform>();
-            Instantiate(SkinManager.instance.SkinsPrefabs[SkinManager.instance.CurrentSkinIndex], _initialPosition);
+            Instantiate(SkinManager.instance.SkinsPrefabs[PlayerPrefs.GetInt("IndexSkin")], _initialPosition);
             _player = GameObject.FindGameObjectWithTag("Player");
             _flagGO = GameObject.Find("Flag");
             _firstStepGO = GameObject.Find("FirstStep");

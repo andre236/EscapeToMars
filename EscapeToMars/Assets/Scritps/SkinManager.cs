@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SkinManager : MonoBehaviour
 {
-    public int CurrentSkinIndex { get; private set; } = 0;
 
     public GameObject[] SkinsPrefabs;
 
@@ -17,6 +17,7 @@ public class SkinManager : MonoBehaviour
        if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -24,15 +25,19 @@ public class SkinManager : MonoBehaviour
         }
     }
 
- 
+
     public void EquipCustom(int indexSkin)
     {
-        CurrentSkinIndex = indexSkin;
+        PlayerPrefs.SetInt("IndexSkin", indexSkin);
+        Debug.Log("Skin: " + SkinsPrefabs[PlayerPrefs.GetInt("IndexSkin")].name + " equipada com sucesso!");
     }
 
-    public void RedeemSkin()
+    public void RedeemSkin(int numberStars)
     {
-
+        if(numberStars >= StarsCollection.instance.TotalStars)
+        {
+            
+        }
     }
 
 }

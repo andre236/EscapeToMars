@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour {
 
     private void Awake() {
         _trasitionSceneAnim = GameObject.Find("TransitionScene").GetComponent<Animator>();
+       
 
     }
 

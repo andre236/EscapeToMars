@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
     public int NextPosition { get; set; } = 1;
 
     private void Awake() {
+        ReferenceGameObjects();
         StartCoroutine("CooldownToReference");
     }
 
@@ -43,7 +44,7 @@ public class Enemy : MonoBehaviour {
 
         _currentAnim = GetComponent<Animator>();
 
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        
 
     }
 
@@ -62,7 +63,6 @@ public class Enemy : MonoBehaviour {
     void ToMove() {
         var _positionsTragectorySize = _positionsTragectory.Length - 1;
         
-
         transform.position = Vector2.MoveTowards(_enemyRB.transform.position, _positionsTragectory[NextPosition].position, MovementSpeed * Time.fixedDeltaTime);
 
         if (Vector2.Distance(_enemyRB.transform.position, _positionsTragectory[NextPosition].position) == 0) {
@@ -73,7 +73,6 @@ public class Enemy : MonoBehaviour {
 
         }
 
-        
     }
 
 
@@ -106,6 +105,6 @@ public class Enemy : MonoBehaviour {
     IEnumerator CooldownToReference()
     {
         yield return new WaitForSeconds(0.8f);
-        ReferenceGameObjects();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 }

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiManagerGO: {fileID: 447290225962141050, guid: 43940c141e5bb1e47be6b7b6512cc205,
     type: 3}
-  _GameManagerGO: {fileID: 20042966317159413, guid: d1872df08bba18643820212e7ec70829,
+  _gameManagerGO: {fileID: 20042966317159413, guid: d1872df08bba18643820212e7ec70829,
+    type: 3}
+  _skinManagerGO: {fileID: 7173899235181876740, guid: e35457550678a8042abbb9d7073391cc,
     type: 3}
   Phase: -1
