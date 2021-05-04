@@ -1,42 +1,38 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
-
+public class MainMenu : MonoBehaviour
+{
     private Animator _trasitionSceneAnim;
-    
 
-    public void LoadSelectPhaseMenu() {
-        _trasitionSceneAnim.SetBool("Starting", true);
-        StartCoroutine("LoadingTransitionScene");
-       
-    }
-
-    private void Awake() {
+    private void Awake()
+    {
         _trasitionSceneAnim = GameObject.Find("TransitionScene").GetComponent<Animator>();
-       
-
     }
 
-    public void ExitApp() {
+    public void LoadSelectPhaseMenu(string nameScene)
+    {
+        _trasitionSceneAnim.SetBool("Starting", true);
+        StartCoroutine(LoadingTransitionScene(nameScene));
+    }
+
+    public void ExitApp()
+    {
         Application.Quit();
     }
-    
-    public void OpenITCHIO()
+
+    public void OpenURL(string url)
     {
-        Application.OpenURL("https://andre-arruda.itch.io/escape-to-mars");
+        Application.OpenURL(url);
     }
 
-    public void OpenTwitter()
+    IEnumerator LoadingTransitionScene(string nameScene)
     {
-        Application.OpenURL("https://twitter.com/AncarusBardo");
-    }
-
-    IEnumerator LoadingTransitionScene(){
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("SELECT_MAP");
+        SceneManager.LoadScene(nameScene);
 
     }
+
+
 }

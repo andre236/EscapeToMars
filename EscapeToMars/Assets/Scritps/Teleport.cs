@@ -7,9 +7,6 @@ public class Teleport : MonoBehaviour
     [SerializeField]
     private bool _isFarTelep;
 
-    private float oldSpeed;
-
-
     private GameObject _cameraMain;
     private GameObject[] _allTeleport;
 
@@ -17,30 +14,36 @@ public class Teleport : MonoBehaviour
     private Transform _destiny;
     private Animator _telepAnim;
 
-    private Vector2 oldFollowSet;
-
     private PlayerMovement _playerMovement;
 
     private void Awake()
+    {
+        ReferenceGameObjects();
+        StartCoroutine("CooldownToReference");
+
+    }
+    private void FixedUpdate()
+    {
+        transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, 10f * Time.deltaTime));
+    }
+
+    private void OnEnable()
+    {
+        ReferenceGameObjects();
+        StartCoroutine("CooldownToReference");
+    }
+
+    void ReferenceGameObjects()
     {
         _destiny = transform.Find("Destiny").GetComponent<Transform>();
         _destiny.transform.parent = null;
 
         _telepAnim = GetComponent<Animator>();
         _allTeleport = GameObject.FindGameObjectsWithTag("Teleport");
-        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         _cameraMain = GameObject.FindGameObjectWithTag("MainCamera");
-
-        oldFollowSet = _cameraMain.GetComponent<FollowCamera>().followOffset;
-        oldSpeed = _cameraMain.GetComponent<FollowCamera>().speed;
     }
 
-    private void FixedUpdate()
-    {
-        transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, 10f * Time.deltaTime));
-
-    }
-
+  
 
     public void TeleportingToDestiny()
     {
@@ -83,7 +86,12 @@ public class Teleport : MonoBehaviour
     }
 
 
+    IEnumerator CooldownToReference()
+    {
+        yield return new WaitForSeconds(0.8f);
+        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
+    }
     IEnumerator CooldownEnableBox()
     {
         yield return new WaitForSeconds(2f);

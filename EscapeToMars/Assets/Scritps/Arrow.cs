@@ -20,7 +20,7 @@ public class Arrow : MonoBehaviour
     private void Awake()
     {
         _arrowAnim = GetComponent<Animator>();
-        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        StartCoroutine("CooldownToReference");
     }
 
     private void Start()
@@ -29,6 +29,11 @@ public class Arrow : MonoBehaviour
         StartCoroutine("DelayToChangeDirection");
     }
 
+    private void OnEnable()
+    {
+        _arrowAnim = GetComponent<Animator>();
+        StartCoroutine("CooldownToReference");
+    }
 
     public void ChangingDirectionAnim()
     {
@@ -110,6 +115,13 @@ public class Arrow : MonoBehaviour
         }
     }
 
+    IEnumerator CooldownToReference()
+    {
+        yield return new WaitForSeconds(0.8f);
+        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+
+    }
+
     IEnumerator DelayToReturnControl()
     {
         yield return new WaitForSeconds(0.15f);
@@ -121,7 +133,6 @@ public class Arrow : MonoBehaviour
     {
 
         yield return new WaitForSeconds(_delay);
-        
         CheckDirection();
         ChangingDirectionAnim();
         StartCoroutine("DelayToChangeDirection");

@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    private Button _upButton, _downButton, _rightButton, _leftButton;
-
     private Rigidbody2D _playerRB;
-    private BoxCollider2D _playerBoxColl;
     private Transform _initialPosition;
 
     [SerializeField]
@@ -36,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _player = GetComponent<Player>();
-        _playerBoxColl = GetComponent<BoxCollider2D>();
         _playerRB = GetComponent<Rigidbody2D>();
         _initialPosition = GameObject.Find("StartPositionPlayer").GetComponent<Transform>();
     }
@@ -258,10 +252,6 @@ public class PlayerMovement : MonoBehaviour
         transform.position = new Vector2(destiny.transform.position.x, destiny.transform.position.y);
 
     }
-
-
-
-
 
     public void GettingPortal(bool onPortal)
     {

@@ -17,6 +17,13 @@ public class BigPoint : MonoBehaviour {
 
     private void Awake() {
         ReferenceGameObjects();
+        StartCoroutine("CooldownToReference");
+    }
+
+    private void OnEnable()
+    {
+        ReferenceGameObjects();
+        StartCoroutine("CooldownToReference");
     }
 
     private void Start() {
@@ -24,7 +31,6 @@ public class BigPoint : MonoBehaviour {
     }
 
     void ReferenceGameObjects() {
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _currentBoxColl2d = GetComponent<BoxCollider2D>();
         _currentAnim = GetComponent<Animator>();
         _currentSprite = GetComponent<SpriteRenderer>();
@@ -55,5 +61,11 @@ public class BigPoint : MonoBehaviour {
 
         }
 
+    }
+
+    IEnumerator CooldownToReference()
+    {
+        yield return new WaitForSeconds(0.8f);
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 }

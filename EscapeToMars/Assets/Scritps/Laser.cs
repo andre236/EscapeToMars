@@ -6,19 +6,25 @@ public class Laser : MonoBehaviour
 {
     [SerializeField]
     private bool _isActivated;
-    
+
     private Animator _laserAnim;
     private Player _player;
 
     private void Awake()
     {
         _laserAnim = GetComponent<Animator>();
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        StartCoroutine("CooldownToReference");
     }
 
     private void Start()
     {
         _laserAnim.SetBool("isActivated", _isActivated);
+    }
+
+    private void OnEnable()
+    {
+        _laserAnim = GetComponent<Animator>();
+        StartCoroutine("CooldownToReference");
     }
 
     public void ActivateDeactivate(bool active)
@@ -43,7 +49,7 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") && _isActivated)
+        if (collision.gameObject.CompareTag("Player") && _isActivated)
         {
             _player.DyingPlayer();
         }
@@ -57,5 +63,9 @@ public class Laser : MonoBehaviour
         }
     }
 
-   
+    IEnumerator CooldownToReference()
+    {
+        yield return new WaitForSeconds(0.8f);
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
 }

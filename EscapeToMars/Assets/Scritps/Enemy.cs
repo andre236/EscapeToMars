@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
 
     private GameObject _pointLight2D;
     private Rigidbody2D _enemyRB;
@@ -12,30 +13,38 @@ public class Enemy : MonoBehaviour {
     private Player _player;
 
     private Transform[] _positionsTragectory;
-    
+
     public float MovementSpeed { get; private set; } = 3.8f;
     public int NextPosition { get; set; } = 1;
 
-    private void Awake() {
+    private void Awake()
+    {
         ReferenceGameObjects();
         StartCoroutine("CooldownToReference");
     }
 
-    void Start() {
-        StartingStats();
-
+    private void OnEnable()
+    {
+        ReferenceGameObjects();
+        StartCoroutine("CooldownToReference");
     }
 
-    void FixedUpdate() {
-        if (!GameManager.instance.isLoadingStep && GameManager.instance.GameStarted) {
+    void Start()
+    {
+        StartingStats();
+    }
+
+    void FixedUpdate()
+    {
+        if (!GameManager.instance.isLoadingStep && GameManager.instance.GameStarted)
+        {
             ToMove();
         }
-
-
     }
 
 
-    void ReferenceGameObjects() {
+    void ReferenceGameObjects()
+    {
         _pointLight2D = transform.Find("Point Light 2D").gameObject;
 
         _enemyRB = GetComponent<Rigidbody2D>();
@@ -44,14 +53,16 @@ public class Enemy : MonoBehaviour {
 
         _currentAnim = GetComponent<Animator>();
 
-        
+
 
     }
 
-    void StartingStats() {
+    void StartingStats()
+    {
         _positionsTragectory = transform.Find("Trajectory").GetComponentsInChildren<Transform>();
 
-        for (int i = 0; i < _positionsTragectory.Length; i++) {
+        for (int i = 0; i < _positionsTragectory.Length; i++)
+        {
 
             _positionsTragectory[i].parent = null;
         }
@@ -60,14 +71,17 @@ public class Enemy : MonoBehaviour {
     }
 
 
-    void ToMove() {
+    void ToMove()
+    {
         var _positionsTragectorySize = _positionsTragectory.Length - 1;
-        
+
         transform.position = Vector2.MoveTowards(_enemyRB.transform.position, _positionsTragectory[NextPosition].position, MovementSpeed * Time.fixedDeltaTime);
 
-        if (Vector2.Distance(_enemyRB.transform.position, _positionsTragectory[NextPosition].position) == 0) {
+        if (Vector2.Distance(_enemyRB.transform.position, _positionsTragectory[NextPosition].position) == 0)
+        {
             NextPosition++;
-            if (NextPosition > _positionsTragectorySize) {
+            if (NextPosition > _positionsTragectorySize)
+            {
                 NextPosition = 0;
             }
 
@@ -76,7 +90,8 @@ public class Enemy : MonoBehaviour {
     }
 
 
-    void Die() {
+    void Die()
+    {
         _currentAnim.SetBool("isDying", true);
         AudioManager.instance.GetSoundEffect(4);
         Destroy(_enemyCollider);
@@ -86,18 +101,23 @@ public class Enemy : MonoBehaviour {
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
-        if (collision.gameObject.CompareTag("Player") && _player.Stronger) {
+        if (collision.gameObject.CompareTag("Player") && _player.Stronger)
+        {
             Die();
             _player.GettingStronger(false);
-        } else if (collision.gameObject.CompareTag("Player") && !_player.Stronger) {
+        }
+        else if (collision.gameObject.CompareTag("Player") && !_player.Stronger)
+        {
             _player.DyingPlayer();
         }
-        
+
     }
 
-    IEnumerator CooldownDying() {
+    IEnumerator CooldownDying()
+    {
         yield return new WaitForSeconds(1.0f);
         Destroy(this.gameObject);
     }
