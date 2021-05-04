@@ -2,6 +2,8 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+    private GameObject _flag;
+
     private Rigidbody2D _playerRB;
     private Transform _initialPosition;
 
@@ -16,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Player _player;
 
-
     public int MovementSpeed { get; private set; } = 5;
 
     public bool IsMovingByArrow { get; private set; } = false;
@@ -27,9 +28,9 @@ public class PlayerMovement : MonoBehaviour
     public bool RequestToMoveRight { get; private set; }
     public bool CantMove { get; private set; } = false;
 
-
     private void Awake()
     {
+        _flag = GameObject.FindGameObjectWithTag("Flag");
         _player = GetComponent<Player>();
         _playerRB = GetComponent<Rigidbody2D>();
         _initialPosition = GameObject.Find("StartPositionPlayer").GetComponent<Transform>();
@@ -39,12 +40,11 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position = _initialPosition.transform.position;
         transform.position = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
-
     }
 
     void Update()
     {
-        bool CanMove = !_player.IsDead && !GameManager.instance.isLoadingStep && !GameManager.instance.Win && GameManager.instance.GameStarted && !IsMovingByArrow && !IsTeleporting && !CantMove;
+        bool CanMove = !_player.IsDead && !GameManager.instance.IsLoadingStep && !GameManager.instance.Win && GameManager.instance.GameStarted && !IsMovingByArrow && !IsTeleporting && !CantMove;
 
         if (CanMove)
         {
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_player.IsDead && !GameManager.instance.isLoadingStep && !GameManager.instance.Win && GameManager.instance.GameStarted && !IsTeleporting)
+        if (!_player.IsDead && !GameManager.instance.IsLoadingStep && !GameManager.instance.Win && GameManager.instance.GameStarted && !IsTeleporting)
         {
             ToMove();
         }
@@ -63,10 +63,14 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveToPortal();
         }
+    }
 
-
-
-
+    private void OnEnable()
+    {
+        _flag = GameObject.FindGameObjectWithTag("Flag");
+        _player = GetComponent<Player>();
+        _playerRB = GetComponent<Rigidbody2D>();
+        _initialPosition = GameObject.Find("StartPositionPlayer").GetComponent<Transform>();
     }
 
     void ToMove()
@@ -75,19 +79,13 @@ public class PlayerMovement : MonoBehaviour
         _rbPlayerPositionRoundY = new Vector3(_playerRB.position.x, Mathf.Round(_playerRB.position.y));
 
         _playerRB.MovePosition(_playerRB.position + _movementVector * MovementSpeed * Time.fixedDeltaTime);
-
     }
 
     public void MoveToPortal()
     {
-        GameObject Flag = GameObject.FindGameObjectWithTag("Flag");
-        transform.position = Vector2.MoveTowards(gameObject.transform.position, Flag.transform.position, 2 * Time.fixedDeltaTime);
+        transform.position = Vector2.MoveTowards(gameObject.transform.position, _flag.transform.position, 2 * Time.fixedDeltaTime);
     }
 
-    public void MoveToTelep()
-    {
-
-    }
 
     public void MoveUpPlayer()
     {
@@ -96,8 +94,6 @@ public class PlayerMovement : MonoBehaviour
         RequestToMoveRight = false;
         RequestToMoveLeft = false;
     }
-
-
 
     public void MoveDownPlayer()
     {
@@ -125,7 +121,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void ControlToMove()
     {
-
         var xOrig = transform.position.x + _raycastOffset.x;
         var yOrig = transform.position.y + _raycastOffset.y;
 
@@ -141,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
         var rayCastLeftA = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.16f), Vector2.left, 0.6f, _permissionLayersMovement);
         var rayCastLeftB = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + -0.28f), Vector2.left, 0.6f, _permissionLayersMovement);
 
-        bool ConditionsPlayerToMove = !_player.IsDead && !GameManager.instance.isLoadingStep;
+        bool ConditionsPlayerToMove = !_player.IsDead && !GameManager.instance.IsLoadingStep;
 
 
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) && ConditionsPlayerToMove)
@@ -180,28 +175,24 @@ public class PlayerMovement : MonoBehaviour
         if (RequestToMoveDown && rayCastDownA.collider == null && rayCastDownB.collider == null)
         {
             MoveToDirection("down");
-
             RequestToMoveDown = false;
         }
 
         if (RequestToMoveUp && rayCastUpA.collider == null && rayCastUpB.collider == null)
         {
             MoveToDirection("up");
-
             RequestToMoveUp = false;
         }
 
         if (RequestToMoveLeft && rayCastLeftA.collider == null && rayCastLeftB.collider == null)
         {
             MoveToDirection("left");
-
             RequestToMoveLeft = false;
         }
 
         if (RequestToMoveRight && rayCastRightA.collider == null && rayCastRightB.collider == null)
         {
             MoveToDirection("right");
-
             RequestToMoveRight = false;
         }
 
@@ -210,8 +201,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveToDirection(string direction)
     {
-
-
         switch (direction)
         {
             case "up":
@@ -235,9 +224,6 @@ public class PlayerMovement : MonoBehaviour
                 _playerRB.position = _rbPlayerPositionRoundY;
                 break;
         }
-
-
-
     }
 
     public void GettingArrow(bool onArrow)
@@ -250,7 +236,6 @@ public class PlayerMovement : MonoBehaviour
         _movementVector.y = 0;
         _movementVector.x = 0;
         transform.position = new Vector2(destiny.transform.position.x, destiny.transform.position.y);
-
     }
 
     public void GettingPortal(bool onPortal)
@@ -262,8 +247,6 @@ public class PlayerMovement : MonoBehaviour
             RequestToMoveUp = false;
             RequestToMoveDown = false;
             RequestToMoveLeft = false;
-
-
         }
     }
 
