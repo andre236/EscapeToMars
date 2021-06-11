@@ -4,17 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class WhereIam : MonoBehaviour
 {
-
     [SerializeField]
     private GameObject _uiManagerGO, _gameManagerGO;
 
     private Animator _trasitionSceneAnim;
 
-    public static WhereIam instance;
-
     public int Phase = -1;
 
-
+    public static WhereIam instance;
 
     void Awake()
     {
@@ -31,7 +28,7 @@ public class WhereIam : MonoBehaviour
         SceneManager.sceneLoaded += CheckPhase;
     }
 
-    private void Start()
+    void Start()
     {
         _trasitionSceneAnim.SetBool("Starting", false);
 
@@ -71,13 +68,6 @@ public class WhereIam : MonoBehaviour
         SceneManager.LoadScene("SELECT_SKIN");
     }
 
-    IEnumerator StartingTransition()
-    {
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(Phase);
-        _trasitionSceneAnim.SetBool("Starting", false);
-
-    }
 
 
 }

@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position = _initialPosition.transform.position;
         transform.position = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+
     }
 
     void Update()
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (GameManager.instance.Win)
         {
-            MoveToPortal();
+            MoveToFlag();
         }
     }
 
@@ -81,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         _playerRB.MovePosition(_playerRB.position + _movementVector * MovementSpeed * Time.fixedDeltaTime);
     }
 
-    public void MoveToPortal()
+    public void MoveToFlag()
     {
         transform.position = Vector2.MoveTowards(gameObject.transform.position, _flag.transform.position, 2 * Time.fixedDeltaTime);
     }

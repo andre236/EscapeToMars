@@ -29,7 +29,6 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-
         if (instance == null)
         {
             instance = this;
@@ -65,7 +64,7 @@ public class UIManager : MonoBehaviour
 
     void GetData()
     {
-        if (WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 2)
+        if(WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 2)
         {
             _uiLoseLevelGO = GameObject.Find("Canvas").transform.Find("UILoseLevel").gameObject;
             _uiWinLevelGO = GameObject.Find("Canvas").transform.Find("UIWinLevel").gameObject;
@@ -96,16 +95,14 @@ public class UIManager : MonoBehaviour
             _pauseButton.onClick.AddListener(PauseGameUI);
             _resumeButton.onClick.AddListener(ReturnFromPauseGame);
 
-            StartUI();
+            TurnOffUI();
         }
-
-
+       
     }
 
     public void GameOverUI()
     {
         StartCoroutine("CoolDownToShowLoseUI");
-
     }
 
     public void SuccessfullyLevelUI(int numberStars)
@@ -125,24 +122,11 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-
-
-
-
-    public void StartUI()
-    {
-        TurnOffUI();
-
-    }
-    
-
     public void PauseGameUI()
     {
-
         _uiPauseLevelGO.SetActive(true);
         _pauseButton.gameObject.SetActive(false);
         _backgroundShadowImage.gameObject.SetActive(true);
-        //Play Animation UI Pause
         Time.timeScale = 0;
     }
 
@@ -150,30 +134,15 @@ public class UIManager : MonoBehaviour
 
     public void ReturnFromPauseGame()
     {
-        //Play Animation UI Exit Pause
         _uiPauseLevelGO.SetActive(false);
         Time.timeScale = 1;
         _pauseButton.gameObject.SetActive(true);
         _backgroundShadowImage.gameObject.SetActive(false);
     }
 
-    public void QuitToMenu()
-    {
-        Debug.Log("Quit to menu.");
-    }
-
     public void TurnOffUI()
     {
         StartCoroutine("CoolDownTurnOffUI");
-    }
-
-
-    IEnumerator AddListerToButtons()
-    {
-        yield return new WaitForSeconds(0.8f);
-
-
-
     }
 
     IEnumerator CooldownToShowUIwin(int numberStars)
@@ -203,11 +172,6 @@ public class UIManager : MonoBehaviour
         _uiWinLevelGO.SetActive(false);
         _uiPauseLevelGO.SetActive(false);
         _backgroundShadowImage.gameObject.SetActive(false);
-
-
-
-
-
     }
 
 

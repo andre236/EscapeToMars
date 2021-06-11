@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-  
-
     private GameObject _firstStepGO, _secondStepGO, _lastStepGO;
     private GameObject _flagGO;
     private GameObject _player;
@@ -40,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void GetData()
     {
-        if (WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0)
+        if (WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 2)
         {
             _initialPosition = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Transform>();
             Instantiate(SkinManager.instance.SkinsPrefabs[PlayerPrefs.GetInt("IndexSkin")], _initialPosition);
@@ -50,11 +48,11 @@ public class GameManager : MonoBehaviour
             _secondStepGO = GameObject.Find("SecondStep");
             _lastStepGO = GameObject.Find("LastStep");
 
-            StartGame();
+            InitializingGame();
         }
     }
 
-    public void StartGame()
+    public void InitializingGame()
     {
         AudioManager.instance.GetBackgroundMusic(Random.Range(1, 2));
         _flagGO.SetActive(false);
@@ -88,6 +86,7 @@ public class GameManager : MonoBehaviour
             ScoreManager.instance.ResetCurrentPointsPlayer();
             Time.timeScale = 1;
             GameStarted = false;
+            Win = false;
             SceneManager.LoadScene(temp);
         }
     }
@@ -96,6 +95,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         GameStarted = false;
+        Win = false;
         AudioManager.instance.GetBackgroundMusic(Random.Range(1, 2));
         SceneManager.LoadScene(WhereIam.instance.Phase);
         ScoreManager.instance.ResetCurrentPointsPlayer();
@@ -104,6 +104,9 @@ public class GameManager : MonoBehaviour
     public void GoToLevelSelect()
     {
         Time.timeScale = 1;
+        GameStarted = false;
+        Win = false;
+
         ScoreManager.instance.ResetCurrentPointsPlayer();
         AudioManager.instance.StopCurrentBackgroundMusic();
         AudioManager.instance.GetBackgroundMusic(3);

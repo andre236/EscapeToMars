@@ -7,14 +7,14 @@ public class Flag : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        int tempPhase = WhereIam.instance.Phase - 1; // 1
-        int tempNexPhase = WhereIam.instance.Phase + 0; // 2
-        int tempStarsAdd = PlayerPrefs.GetInt("TotalStars");
+        int tempPhase = WhereIam.instance.Phase - 2; // 1 ( Subtract "2" for Scenes: Main Scene, Shop Scene and Level Manager Scene.)
+        int tempNexPhase = WhereIam.instance.Phase - 1; // 2
 
         if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA && !_isLastLevel)
         {
             GameManager.instance.SuccessfullyLevel(1);
             PlayerPrefs.SetInt("Level" + tempPhase, 1);
+            
             if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 1)
             {
                 PlayerPrefs.SetInt("StarsLevel" + tempPhase, 1);
@@ -43,8 +43,8 @@ public class Flag : MonoBehaviour
             if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 3)
             {
                 PlayerPrefs.SetInt("StarsLevel" + tempPhase, 3);
-
             }
+
             PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
         }
 

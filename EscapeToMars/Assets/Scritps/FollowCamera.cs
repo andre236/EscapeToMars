@@ -3,10 +3,14 @@
 public class FollowCamera : MonoBehaviour {
 
     private GameObject followObject;
-    public Vector2 followOffset = new Vector2(6, 3);
-    public float speed = 3f;
+   
     private Vector2 threshold;
     private Rigidbody2D rb;
+
+    public float speed = 3f;
+
+    public Vector2 followOffset = new Vector2(6, 3);
+
 
     private void Start() {
         followObject = GameObject.FindGameObjectWithTag("Player");
