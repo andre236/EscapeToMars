@@ -30,25 +30,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.16666667
-        value: 5.56
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.33333334
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.35
+        time: 0.6166667
         value: 0
         inSlope: 0
         outSlope: 0
@@ -66,24 +48,21 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 5329920761269417381, guid: 1ceca5424e610634893496169c687dc2,
+      value: {fileID: -8405842877898104024, guid: 44d29fec7b7fda64facca3d12343fac5,
         type: 3}
-    - time: 0.06666667
-      value: {fileID: -8792764569938965409, guid: 1ceca5424e610634893496169c687dc2,
+    - time: 0.15
+      value: {fileID: -2985136789853612270, guid: 44d29fec7b7fda64facca3d12343fac5,
         type: 3}
-    - time: 0.13333334
-      value: {fileID: 8213757827700412420, guid: 1ceca5424e610634893496169c687dc2,
-        type: 3}
-    - time: 0.2
-      value: {fileID: -1274780571184170415, guid: 1ceca5424e610634893496169c687dc2,
-        type: 3}
-    - time: 0.26666668
-      value: {fileID: 6944217929616671997, guid: 1ceca5424e610634893496169c687dc2,
+    - time: 0.21666667
+      value: {fileID: 7758741094221337346, guid: 44d29fec7b7fda64facca3d12343fac5,
         type: 3}
     - time: 0.33333334
-      value: {fileID: -4490275196095474121, guid: 1ceca5424e610634893496169c687dc2,
+      value: {fileID: -6472835415824156737, guid: 44d29fec7b7fda64facca3d12343fac5,
         type: 3}
-    - time: 0.35
+    - time: 0.48333332
+      value: {fileID: 1928675808579624404, guid: 44d29fec7b7fda64facca3d12343fac5,
+        type: 3}
+    - time: 0.6
       value: {fileID: 0}
     attribute: m_Sprite
     path: 
@@ -111,19 +90,18 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 5329920761269417381, guid: 1ceca5424e610634893496169c687dc2, type: 3}
-    - {fileID: -8792764569938965409, guid: 1ceca5424e610634893496169c687dc2, type: 3}
-    - {fileID: 8213757827700412420, guid: 1ceca5424e610634893496169c687dc2, type: 3}
-    - {fileID: -1274780571184170415, guid: 1ceca5424e610634893496169c687dc2, type: 3}
-    - {fileID: 6944217929616671997, guid: 1ceca5424e610634893496169c687dc2, type: 3}
-    - {fileID: -4490275196095474121, guid: 1ceca5424e610634893496169c687dc2, type: 3}
+    - {fileID: -8405842877898104024, guid: 44d29fec7b7fda64facca3d12343fac5, type: 3}
+    - {fileID: -2985136789853612270, guid: 44d29fec7b7fda64facca3d12343fac5, type: 3}
+    - {fileID: 7758741094221337346, guid: 44d29fec7b7fda64facca3d12343fac5, type: 3}
+    - {fileID: -6472835415824156737, guid: 44d29fec7b7fda64facca3d12343fac5, type: 3}
+    - {fileID: 1928675808579624404, guid: 44d29fec7b7fda64facca3d12343fac5, type: 3}
     - {fileID: 0}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.36666667
+    m_StopTime: 0.6166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -152,25 +130,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.16666667
-        value: 5.56
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.33333334
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.35
+        time: 0.6166667
         value: 0
         inSlope: 0
         outSlope: 0
