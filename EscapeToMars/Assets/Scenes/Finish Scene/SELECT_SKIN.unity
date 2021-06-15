@@ -3144,6 +3144,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 209419845143642803, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1278377297251239582, guid: f9cdd6354d83c0546b95e25f490ecc81,
+        type: 3}
+    - target: {fileID: 209419845143642804, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -22.48996
+      objectReference: {fileID: 0}
+    - target: {fileID: 209419845143642804, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209419845143642804, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209419845143642804, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209419845143642804, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.9889
+      objectReference: {fileID: 0}
+    - target: {fileID: 209419845143642804, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.498
+      objectReference: {fileID: 0}
     - target: {fileID: 322466416668512356, guid: b06cfbffff3c6254e84c85b035ccaffb,
         type: 3}
       propertyPath: skinNameTXT
@@ -3462,6 +3498,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardSpaceship Poison
       objectReference: {fileID: 0}
+    - target: {fileID: 7874278199236523732, guid: 5b1941cf0adffea43ae5b97f7f4ebb91,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.123
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874278199236523732, guid: 5b1941cf0adffea43ae5b97f7f4ebb91,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.1667107
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874278199236523732, guid: 5b1941cf0adffea43ae5b97f7f4ebb91,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 246
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874278199236523732, guid: 5b1941cf0adffea43ae5b97f7f4ebb91,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 196
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874278199236523732, guid: 5b1941cf0adffea43ae5b97f7f4ebb91,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874278199236523732, guid: 5b1941cf0adffea43ae5b97f7f4ebb91,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874278199236523735, guid: 5b1941cf0adffea43ae5b97f7f4ebb91,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1a54fadcb3bbea4182f8ceea57a045e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b1941cf0adffea43ae5b97f7f4ebb91, type: 3}
 --- !u!224 &2916824020766635506
