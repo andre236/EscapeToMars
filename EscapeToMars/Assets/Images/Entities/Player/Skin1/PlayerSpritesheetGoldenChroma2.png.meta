@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 3a2a27ad9b3e37d4e9e28be973b71039
+guid: 0db725b2437c7b3448c99ff30e6c27f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7945328390941665021
-    second: PlayerSpritesheetPurpleChromaB.fw_0
+      213: -652399352198491463
+    second: PlayerSpritesheetGoldenChroma2_0
   - first:
-      213: 9132482633959442613
-    second: PlayerSpritesheetPurpleChromaB.fw_1
+      213: 191182002796157771
+    second: PlayerSpritesheetGoldenChroma2_1
   - first:
-      213: -3479608505612027518
-    second: PlayerSpritesheetPurpleChromaB.fw_2
+      213: 3567481446674935115
+    second: PlayerSpritesheetGoldenChroma2_2
   - first:
-      213: -7803519129609088032
-    second: PlayerSpritesheetPurpleChromaB.fw_3
+      213: 3416167147258884651
+    second: PlayerSpritesheetGoldenChroma2_3
   - first:
-      213: -3355476404153812545
-    second: PlayerSpritesheetPurpleChromaB.fw_4
+      213: -343009567993379797
+    second: PlayerSpritesheetGoldenChroma2_4
   - first:
-      213: -2213166481031029608
-    second: PlayerSpritesheetPurpleChromaB.fw_5
+      213: -6784203106733124652
+    second: PlayerSpritesheetGoldenChroma2_5
   - first:
-      213: 893117403795154672
-    second: PlayerSpritesheetPurpleChromaB.fw_6
+      213: -7410998447511993792
+    second: PlayerSpritesheetGoldenChroma2_6
   - first:
-      213: 5823309591938969895
-    second: PlayerSpritesheetPurpleChromaB.fw_7
+      213: 672540069953502539
+    second: PlayerSpritesheetGoldenChroma2_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -147,7 +147,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerSpritesheetPurpleChromaB.fw_0
+      name: PlayerSpritesheetGoldenChroma2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df667ed431a734e60800000000000000
-      internalID: 7945328390941665021
+      spriteID: 9b29388ee3632f6f0800000000000000
+      internalID: -652399352198491463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerSpritesheetPurpleChromaB.fw_1
+      name: PlayerSpritesheetGoldenChroma2_1
       rect:
         serializedVersion: 2
         x: 96
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b88392d1981dbe70800000000000000
-      internalID: 9132482633959442613
+      spriteID: b4bdc14c40737a200800000000000000
+      internalID: 191182002796157771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerSpritesheetPurpleChromaB.fw_2
+      name: PlayerSpritesheetGoldenChroma2_2
       rect:
         serializedVersion: 2
         x: 192
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2893199ff72f5bfc0800000000000000
-      internalID: -3479608505612027518
+      spriteID: b4d2bd3797d328130800000000000000
+      internalID: 3567481446674935115
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerSpritesheetPurpleChromaB.fw_3
+      name: PlayerSpritesheetGoldenChroma2_3
       rect:
         serializedVersion: 2
         x: 288
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e35fa942b454b390800000000000000
-      internalID: -7803519129609088032
+      spriteID: b22b9b9bbe9a86f20800000000000000
+      internalID: 3416167147258884651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerSpritesheetPurpleChromaB.fw_4
+      name: PlayerSpritesheetGoldenChroma2_4
       rect:
         serializedVersion: 2
         x: 0
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb9f43e0df3fe61d0800000000000000
-      internalID: -3355476404153812545
+      spriteID: b24c1318d926d3bf0800000000000000
+      internalID: -343009567993379797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerSpritesheetPurpleChromaB.fw_5
+      name: PlayerSpritesheetGoldenChroma2_5
       rect:
         serializedVersion: 2
         x: 96
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89c1855bfc04941e0800000000000000
-      internalID: -2213166481031029608
+      spriteID: 4d3121bf73ba9d1a0800000000000000
+      internalID: -6784203106733124652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerSpritesheetPurpleChromaB.fw_6
+      name: PlayerSpritesheetGoldenChroma2_6
       rect:
         serializedVersion: 2
         x: 192
@@ -287,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f6edebfb8df46c00800000000000000
-      internalID: 893117403795154672
+      spriteID: 04283195d28d62990800000000000000
+      internalID: -7410998447511993792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerSpritesheetPurpleChromaB.fw_7
+      name: PlayerSpritesheetGoldenChroma2_7
       rect:
         serializedVersion: 2
         x: 288
@@ -308,8 +308,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 721b5ac783d80d050800000000000000
-      internalID: 5823309591938969895
+      spriteID: b4d7bce51a7555900800000000000000
+      internalID: 672540069953502539
       vertices: []
       indices: 
       edges: []
