@@ -2073,6 +2073,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 209419844177858367}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &958707075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 209419845034986482, guid: b06cfbffff3c6254e84c85b035ccaffb,
+    type: 3}
+  m_PrefabInstance: {fileID: 209419844177858367}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958707073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &958707077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4579,6 +4591,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 209419845034986482, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209419845034986482, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209419845034986482, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 209419845034986483, guid: b06cfbffff3c6254e84c85b035ccaffb,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -4645,6 +4672,21 @@ PrefabInstance:
       propertyPath: skinNameTXT
       value: 
       objectReference: {fileID: 138970183}
+    - target: {fileID: 3336882139937530189, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: _equipTXT
+      value: 
+      objectReference: {fileID: 958707075}
+    - target: {fileID: 5466832078841151159, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466832078841151159, guid: b06cfbffff3c6254e84c85b035ccaffb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipCustom
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b06cfbffff3c6254e84c85b035ccaffb, type: 3}
 --- !u!1001 &2438895347673932019

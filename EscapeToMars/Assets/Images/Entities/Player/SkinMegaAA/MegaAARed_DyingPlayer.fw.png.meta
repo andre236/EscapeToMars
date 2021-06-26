@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: 1b7aab285f3dede4a812df67572448a7
+guid: 33df7865091f7174191d011fc4f0e008
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2110837072681355108
-    second: MegaAABlue_DyingPlayer.fw_0
+      213: 1297446012853847272
+    second: MegaAARed_DyingPlayer.fw_0
   - first:
-      213: -6192745644817464203
-    second: MegaAABlue_DyingPlayer.fw_1
+      213: -5508859621876764170
+    second: MegaAARed_DyingPlayer.fw_1
   - first:
-      213: -6456759949297152640
-    second: MegaAABlue_DyingPlayer.fw_2
+      213: 3382814381377622803
+    second: MegaAARed_DyingPlayer.fw_2
   - first:
-      213: -7099017003785559819
-    second: MegaAABlue_DyingPlayer.fw_3
+      213: 802222213264742540
+    second: MegaAARed_DyingPlayer.fw_3
   - first:
-      213: 5599693610935505259
-    second: MegaAABlue_DyingPlayer.fw_4
+      213: -7216601531866644222
+    second: MegaAARed_DyingPlayer.fw_4
   - first:
-      213: -7387720730329521102
-    second: MegaAABlue_DyingPlayer.fw_5
+      213: -7092520339950923093
+    second: MegaAARed_DyingPlayer.fw_5
   - first:
-      213: -6747538344274135476
-    second: MegaAABlue_DyingPlayer.fw_6
+      213: -8217902045138828176
+    second: MegaAARed_DyingPlayer.fw_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -144,7 +144,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MegaAABlue_DyingPlayer.fw_0
+      name: MegaAARed_DyingPlayer.fw_0
       rect:
         serializedVersion: 2
         x: 0
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c983a18bddcc4b2e0800000000000000
-      internalID: -2110837072681355108
+      spriteID: 8e486674644710210800000000000000
+      internalID: 1297446012853847272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegaAABlue_DyingPlayer.fw_1
+      name: MegaAARed_DyingPlayer.fw_1
       rect:
         serializedVersion: 2
         x: 96
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 574ce4885a2fe0aa0800000000000000
-      internalID: -6192745644817464203
+      spriteID: 6f1fa807c599c83b0800000000000000
+      internalID: -5508859621876764170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegaAABlue_DyingPlayer.fw_2
+      name: MegaAARed_DyingPlayer.fw_2
       rect:
         serializedVersion: 2
         x: 192
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08d8c26190bf466a0800000000000000
-      internalID: -6456759949297152640
+      spriteID: 3139817c1cb22fe20800000000000000
+      internalID: 3382814381377622803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegaAABlue_DyingPlayer.fw_3
+      name: MegaAARed_DyingPlayer.fw_3
       rect:
         serializedVersion: 2
         x: 288
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f067e2b5a93b7d90800000000000000
-      internalID: -7099017003785559819
+      spriteID: c8892944ad0122b00800000000000000
+      internalID: 802222213264742540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegaAABlue_DyingPlayer.fw_4
+      name: MegaAARed_DyingPlayer.fw_4
       rect:
         serializedVersion: 2
         x: 0
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b61d5d2bbab16bd40800000000000000
-      internalID: 5599693610935505259
+      spriteID: 2018c87542b79db90800000000000000
+      internalID: -7216601531866644222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegaAABlue_DyingPlayer.fw_5
+      name: MegaAARed_DyingPlayer.fw_5
       rect:
         serializedVersion: 2
         x: 96
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2346be8332b897990800000000000000
-      internalID: -7387720730329521102
+      spriteID: ba21efe145e429d90800000000000000
+      internalID: -7092520339950923093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegaAABlue_DyingPlayer.fw_6
+      name: MegaAARed_DyingPlayer.fw_6
       rect:
         serializedVersion: 2
         x: 192
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c46763930adeb52a0800000000000000
-      internalID: -6747538344274135476
+      spriteID: 0744b8851a524fd80800000000000000
+      internalID: -8217902045138828176
       vertices: []
       indices: 
       edges: []
