@@ -3,44 +3,106 @@ using UnityEngine.UI;
 public class RedeemSystem : MonoBehaviour
 {
     [SerializeField]
-    private int _skinPrice, _skinIndex;
+    private int _skinPrice, _skinIndexCard;
 
     [SerializeField]
-    private bool _canRedeem, _canBuy, _canEquip;
+    private bool _isAvailable, _canRedeem, _canEquip, _haveSkin;
     
     [SerializeField]
     private Text _equipTXT, _skinPriceTXT;
     private Image _splashArtIMG;
 
-    public void Redeem()
+
+    private void Start()
     {
+        GetData();
+    }
+
+    private void Update()
+    {
+        if(PlayerPrefs.GetInt("Have_Skin" + _skinIndexCard) == _skinIndexCard && _haveSkin && PlayerPrefs.GetInt("IndexSkin") != _skinIndexCard)
+        {
+            _equipTXT.text = "Equip";
+        }
+    }
+
+    void GetData()
+    {
+        Button actionButton = GetComponent<Button>();
+        var skinEquipped = PlayerPrefs.GetInt("IndexSkin");
+        var haveSkinIndex = PlayerPrefs.GetInt("Have_Skin" + _skinIndexCard);
         int totalStars = PlayerPrefs.GetInt("TotalStars");
-        _canBuy = totalStars >= _skinPrice;
+
+        _haveSkin = haveSkinIndex == _skinIndexCard; // Tem a skin na PlayerPrefs.
+        _canEquip = _haveSkin && skinEquipped != _skinIndexCard; // Se tem a skin e não está equipada
+        _canRedeem = _isAvailable && totalStars >= _skinPrice && !_haveSkin; // Se está disponível, tem estrelas e não tem a skin.
+
+        if (!_isAvailable)
+        {
+            _equipTXT.text = "Unavaliable";
+        }
+        else if (_isAvailable && skinEquipped == _skinIndexCard)
+        {
+            _equipTXT.text = "Equipped";
+        } 
+        else if (_isAvailable && skinEquipped != _skinIndexCard && _haveSkin)
+        {
+            _equipTXT.text = "Equip";
+            actionButton.onClick.RemoveAllListeners();
+            actionButton.onClick.AddListener(EquipSkin);
+        }
+        else if (_isAvailable && skinEquipped != _skinIndexCard && _canRedeem)
+        {
+            actionButton.onClick.RemoveAllListeners();
+            actionButton.onClick.AddListener(AcquireSkin);
+        }
+        else if (_isAvailable && skinEquipped != _skinIndexCard && !_canRedeem)
+        {
+            _equipTXT.color = Color.red;
+            _equipTXT.text = "Redeem";
+        }
+
+        _skinPriceTXT.text = _skinPrice.ToString();
+    }
+
+    public void AcquireSkin()
+    {
+        Button actionButton = GetComponent<Button>();
+        bool canAcquire = PlayerPrefs.GetInt("TotalStars") >= _skinPrice && !_haveSkin;
+
 
         if (_canRedeem)
         {
-            if(_canBuy)
-            {
-                _equipTXT.text = "Equip";
-                _canEquip = true;
-                PlayerPrefs.SetInt("Have_Skin" + _skinIndex, _skinIndex);
-            }
-            else
-            {
-                _equipTXT.color = Color.red;
-            }
+            _equipTXT.text = "Equip";
+            PlayerPrefs.SetInt("Have_Skin" + _skinIndexCard, _skinIndexCard);
+            _canEquip = true;
+            actionButton.onClick.RemoveAllListeners();
+            actionButton.onClick.AddListener(EquipSkin);
         }
-
-        if (_canEquip)
+        else
         {
-            if (PlayerPrefs.GetInt("IndexSkin") != _skinIndex)
-            {
-                _equipTXT.color = Color.white;
-                _equipTXT.text = "Equipped";
-                PlayerPrefs.SetInt("IndexSkin", _skinIndex);
-            }
+            _equipTXT.text = "Redeem";
+            _equipTXT.color = Color.red;
         }
 
     }
+
+    public void EquipSkin()
+    {
+        var skinEquipped = PlayerPrefs.GetInt("IndexSkin");
+
+        if (_skinIndexCard != skinEquipped && _canEquip)
+        {
+            PlayerPrefs.SetInt("IndexSkin", _skinIndexCard);
+            _equipTXT.text = "Equipped";
+        }
+        else if (_skinIndexCard == skinEquipped && _canEquip)
+        {
+            _equipTXT.text = "Equipped";
+        }
+
+    }
+
+
 
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a02abdd1721b4824990f926ee797a356
+guid: 68660d633c98ea649af813d42e923d22
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Super Boom
+  fontName: Neuropol X
   fontNames:
-  - Super Boom
+  - Neuropol X
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

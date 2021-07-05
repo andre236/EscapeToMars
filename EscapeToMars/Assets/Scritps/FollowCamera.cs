@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FollowCamera : MonoBehaviour {
 
@@ -12,10 +13,8 @@ public class FollowCamera : MonoBehaviour {
     public Vector2 followOffset = new Vector2(6, 3);
 
 
-    private void Start() {
-        followObject = GameObject.FindGameObjectWithTag("Player");
-        threshold = CalculateThreshold();
-        rb = followObject.GetComponent<Rigidbody2D>();
+    private void Awake() {
+        StartCoroutine("Reference");
     }
 
     void FixedUpdate() {
@@ -46,5 +45,13 @@ public class FollowCamera : MonoBehaviour {
         Gizmos.color = Color.blue;
         Vector2 border = CalculateThreshold();
         Gizmos.DrawWireCube(transform.position, new Vector3(border.x * 2, border.y * 2, 1));
+    }
+
+    IEnumerator Reference()
+    {
+        yield return new WaitForSeconds(1f);
+        followObject = GameObject.FindGameObjectWithTag("Player");
+        threshold = CalculateThreshold();
+        rb = followObject.GetComponent<Rigidbody2D>();
     }
 }
