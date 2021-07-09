@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour {
-
+public class LevelManager : MonoBehaviour
+{
 
     [System.Serializable]
-    public class Level {
+    public class Level
+    {
         public string LevelText;
         public bool Able;
         public bool ActiveTXT;
@@ -22,66 +23,79 @@ public class LevelManager : MonoBehaviour {
     private Transform _parentButtons;
     public List<Level> LevelList;
 
-    void Awake() {
+    void Awake()
+    {
         Destroy(GameObject.Find("UIManager(Clone)"));
         Destroy(GameObject.Find("GameManager(Clone)"));
         Destroy(GameObject.Find("SkinManager(Clone)"));
     }
 
-    void Start() {
+    void Start()
+    {
         AddToList();
+        AudioManager.Instance.PlaySoundEffect(8);
     }
 
-    public void ResetPlayerPrefs() {
+    public void ResetPlayerPrefs()
+    {
         PlayerPrefs.DeleteAll();
     }
 
-    void ClickLevel(string level) {
-        AudioManager.instance.StopCurrentBackgroundMusic();
+    void ClickLevel(string level)
+    {
+        AudioManager.Instance.StopCurrentBackgroundMusic();
         WhereIam.instance.IsTransitinScenesTrue();
         StartCoroutine("StartingTransition", level);
-        
     }
 
-    void AddToList() {
-        foreach (Level level in LevelList) {
+    void AddToList()
+    {
+        foreach (Level level in LevelList)
+        {
             GameObject newLevelButton = Instantiate(_levelButton) as GameObject;
             LevelButton newLevel = newLevelButton.GetComponent<LevelButton>();
             newLevel.numberLevelTXT.text = level.LevelText;
-            
 
-            if (PlayerPrefs.GetInt("Level" + newLevel.numberLevelTXT.text) == 1) {
+
+            if (PlayerPrefs.GetInt("Level" + newLevel.numberLevelTXT.text) == 1)
+            {
                 level.Unlocked = 1;
                 level.Able = true;
                 level.ActiveTXT = true;
                 level.Stars = 0;
             }
 
-            if(PlayerPrefs.GetInt("StarsLevel" + newLevel.numberLevelTXT.text) == 1) {
+            if (PlayerPrefs.GetInt("StarsLevel" + newLevel.numberLevelTXT.text) == 1)
+            {
                 level.Stars = 1;
             }
-            if (PlayerPrefs.GetInt("StarsLevel" + newLevel.numberLevelTXT.text) == 2) {
+            if (PlayerPrefs.GetInt("StarsLevel" + newLevel.numberLevelTXT.text) == 2)
+            {
                 level.Stars = 2;
             }
-            if (PlayerPrefs.GetInt("StarsLevel" + newLevel.numberLevelTXT.text) >= 3) {
+            if (PlayerPrefs.GetInt("StarsLevel" + newLevel.numberLevelTXT.text) >= 3)
+            {
                 level.Stars = 3;
             }
 
             newLevel.transform.Find("AbleStar1").gameObject.SetActive(level.Stars >= 1);
             newLevel.transform.Find("AbleStar2").gameObject.SetActive(level.Stars >= 2);
             newLevel.transform.Find("AbleStar3").gameObject.SetActive(level.Stars >= 3);
-            
+
             newLevel.Unlocked = level.Unlocked;
             newLevel.GetComponent<Button>().interactable = level.Able;
             newLevel.GetComponentInChildren<Text>().enabled = level.ActiveTXT;
             newLevel.GetComponent<Button>().onClick.AddListener(() => ClickLevel("Level" + newLevel.numberLevelTXT.text));
-            
+
             newLevelButton.transform.SetParent(_parentButtons, false);
         }
 
     }
 
-    IEnumerator StartingTransition(string level) {
+    IEnumerator StartingTransition(string level)
+    {
+
+        AudioManager.Instance.PlaySoundEffect(9);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(level);
 

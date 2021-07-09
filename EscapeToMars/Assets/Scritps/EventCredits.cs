@@ -63,7 +63,7 @@ public class EventCredits : MonoBehaviour
 
         PinCameraToPlayer();
         //Sumir a música V
-        AudioManager.instance.StopFadeOutCurrentBackgroundMusic();
+        AudioManager.Instance.StopFadeOutCurrentBackgroundMusic();
         StartCoroutine("CooldownToPlayBGM");
         //Tocar uma música V
         _playerMovement.MoveRightPlayer();
@@ -145,7 +145,7 @@ public class EventCredits : MonoBehaviour
     {
         yield return new WaitForSeconds(10);
         _tksScreen.GetComponent<Animator>().SetBool("isFadeOut", true);
-        AudioManager.instance.StopCurrentBackgroundMusic();
+        AudioManager.Instance.StopCurrentBackgroundMusic();
         StartCoroutine("LoadSceneCooldown");
     }
 
@@ -159,7 +159,7 @@ public class EventCredits : MonoBehaviour
     IEnumerator CooldownToPlayBGM()
     {
         yield return new WaitForSeconds(3);
-        AudioManager.instance.GetBackgroundMusicInTheEnd(0);
-        AudioManager.instance.SetStandardVolumeSound();
+        AudioManager.Instance.PlayBackgroundMusicInTheEnd(0);
+        AudioManager.Instance.SetStandardVolumeSound();
     }
 }

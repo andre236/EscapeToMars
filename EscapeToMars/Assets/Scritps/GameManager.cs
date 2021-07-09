@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     public void InitializingGame()
     {
-        AudioManager.instance.GetBackgroundMusic(Random.Range(1, 2));
+        AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 2));
         _flagGO.SetActive(false);
         _secondStepGO.SetActive(false);
         _lastStepGO.SetActive(false);
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         GameStarted = false;
         Win = false;
-        AudioManager.instance.GetBackgroundMusic(Random.Range(1, 2));
+        AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 2));
         SceneManager.LoadScene(WhereIam.instance.Phase);
         ScoreManager.instance.ResetCurrentPointsPlayer();
     }
@@ -108,8 +108,8 @@ public class GameManager : MonoBehaviour
         Win = false;
 
         ScoreManager.instance.ResetCurrentPointsPlayer();
-        AudioManager.instance.StopCurrentBackgroundMusic();
-        AudioManager.instance.GetBackgroundMusic(3);
+        AudioManager.Instance.StopCurrentBackgroundMusic();
+        AudioManager.Instance.PlayBackgroundMusic(3);
         SceneManager.LoadScene("SELECT_MAP");
     }
 
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
 
         if (ScoreManager.instance.CurrentPointsPlayer == ScoreManager.instance.TotalPointsA)
         {
-            AudioManager.instance.GetSoundEffect(5);
+            AudioManager.Instance.PlaySoundEffect(5);
             _flagGO.SetActive(true);
             _secondStepGO.SetActive(true);
             ScoreManager.instance.ReferencePointsB();

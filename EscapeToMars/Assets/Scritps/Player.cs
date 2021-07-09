@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         IsDead = true;
         _playerAnim.SetBool("isDying", true);
         Destroy(GetComponent<BoxCollider2D>());
-        AudioManager.instance.GetSoundEffect(2);
+        AudioManager.Instance.PlaySoundEffect(2);
         GameManager.instance.GameOver();
     }
 
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         {
             Destroy(GetComponent<BoxCollider2D>());
             StartCoroutine("CooldownToAnimate");
-            AudioManager.instance.GetSoundEffect(3);
+            AudioManager.Instance.PlaySoundEffect(3);
         }
 
         if (collision.gameObject.CompareTag("Cyclop") && !Stronger)
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
     IEnumerator PlayerEmergingSound()
     {
         yield return new WaitForSeconds(0.5f);
-        AudioManager.instance.GetSoundEffect(7);
+        AudioManager.Instance.PlaySoundEffect(7);
     }
 
 }

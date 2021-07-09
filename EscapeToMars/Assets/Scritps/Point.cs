@@ -34,7 +34,7 @@ public class Point : MonoBehaviour {
             ToDestroy();
             _particlesPoints.SetActive(true);
             Destroy(_particlesPoints, 0.5f);
-            AudioManager.instance.GetSoundEffect(1);
+            AudioManager.Instance.PlaySoundEffect(1);
             ScoreManager.instance.IncreasePointsPlayer();
             
             GameManager.instance.TriggerFlag();
@@ -45,7 +45,7 @@ public class Point : MonoBehaviour {
             ToDestroy();
             _particlesPoints.SetActive(true);
             Destroy(_particlesPoints, 0.5f);
-            AudioManager.instance.GetSoundEffect(1, 1.2f);
+            AudioManager.Instance.PlaySoundEffect(1, 1.2f);
             ScoreManager.instance.IncreasePointsPlayer();
             GameManager.instance.SecondStar();
             Destroy(gameObject, 1f);
@@ -54,7 +54,7 @@ public class Point : MonoBehaviour {
             ToDestroy();
             _particlesPoints.SetActive(true);
             Destroy(_particlesPoints, 0.5f);
-            AudioManager.instance.GetSoundEffect(1, 1.5f);
+            AudioManager.Instance.PlaySoundEffect(1, 1.5f);
             ScoreManager.instance.IncreasePointsPlayer();
             Destroy(gameObject, 1f);
         }

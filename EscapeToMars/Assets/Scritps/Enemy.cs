@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         _currentAnim.SetBool("isDying", true);
-        AudioManager.instance.GetSoundEffect(4);
+        AudioManager.Instance.PlaySoundEffect(4);
         Destroy(_enemyCollider);
         Destroy(_pointLight2D);
         StartCoroutine("CooldownDying");

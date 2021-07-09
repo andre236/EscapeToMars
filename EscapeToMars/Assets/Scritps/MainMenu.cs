@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     public void LoadSelectPhaseMenu(string nameScene)
     {
         _trasitionSceneAnim.SetBool("Starting", true);
+        AudioManager.Instance.PlaySoundEffect(9);
         StartCoroutine(LoadingTransitionScene(nameScene));
     }
 

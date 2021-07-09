@@ -55,7 +55,7 @@ public class BigPoint : MonoBehaviour {
             ToDestroy();
             _particlesGOB.SetActive(true);
             Destroy(_particlesGOB, 0.5f);
-            AudioManager.instance.GetSoundEffect(0);
+            AudioManager.Instance.PlaySoundEffect(0);
             _player.GettingStronger(true);
             Destroy(gameObject, 1f);
 

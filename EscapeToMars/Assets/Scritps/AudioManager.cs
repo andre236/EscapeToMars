@@ -21,11 +21,11 @@ public class AudioManager : MonoBehaviour {
 
     public bool IsMuted { get; private set; } = false;
 
-    public static AudioManager instance;
+    public static AudioManager Instance;
 
     void Awake() {
-        if (instance == null) {
-            instance = this;
+        if (Instance == null) {
+            Instance = this;
             DontDestroyOnLoad(gameObject);          
         }
         else {
@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour {
 
     private void Start()
     {
-        GetBackgroundMusic(0);
+        PlayBackgroundMusic(0);
     }
 
     void Load(Scene scene, LoadSceneMode loadSceneMode)
@@ -74,18 +74,13 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void GetSoundEffect(int indexSFX) {
-        _soundsEffects[indexSFX + 1].Play();
-
-    }
-
-    public void GetSoundEffect(int indexSFX, float pitchSFX) {
+    public void PlaySoundEffect(int indexSFX, float pitchSFX = 1, ulong timeToPlay = 0) {
         _soundsEffects[indexSFX + 1].pitch = pitchSFX;
         _soundsEffects[indexSFX + 1].Play();
     }
 
 
-    public void GetBackgroundMusic(int indexBGM) {
+    public void PlayBackgroundMusic(int indexBGM) {
         
         for(int i = 1; i < _backgroundMusics.Length; i++)
         {
@@ -97,7 +92,7 @@ public class AudioManager : MonoBehaviour {
 
     }
 
-    public void GetBackgroundMusicInTheEnd(int indexBGM)
+    public void PlayBackgroundMusicInTheEnd(int indexBGM)
     {
         for (int i = 1; i < _backgroundMusics.Length; i++)
         {
@@ -124,11 +119,10 @@ public class AudioManager : MonoBehaviour {
 
     public void SetStandardVolumeSound()
     {
-        _backgroundMusics[1].volume = 0.25f;
-        _backgroundMusics[2].volume = 0.25f;
-        _backgroundMusics[3].volume = 0.25f;
-        _backgroundMusics[4].volume = 0.25f;
-
+        for(int i = 1; i < 5; i++)
+        {
+            _backgroundMusics[i].volume = 0.25f;
+        }
     }
 
     public void MuteDesmuteAllSounds() {

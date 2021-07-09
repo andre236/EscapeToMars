@@ -77,7 +77,7 @@ public class Teleport : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             ActiveDesactiveBoxCollider();
-            AudioManager.instance.GetSoundEffect(6);
+            AudioManager.Instance.PlaySoundEffect(6);
             _playerMovement.GettingPortal(true);
             _telepAnim.SetBool("isClosing", true);
             TeleportingToDestiny();

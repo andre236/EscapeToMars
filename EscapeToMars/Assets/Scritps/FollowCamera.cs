@@ -4,7 +4,6 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour {
 
     private GameObject followObject;
-   
     private Vector2 threshold;
     private Rigidbody2D rb;
 
