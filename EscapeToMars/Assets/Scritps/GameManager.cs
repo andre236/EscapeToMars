@@ -96,7 +96,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         GameStarted = false;
         Win = false;
-        AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 2));
+        AudioManager.Instance.CheckBGMisPlaying();
+        if (!AudioManager.Instance.IsPlayingBGM)
+        {
+            AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 5));
+        }
+        //AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 2));
         SceneManager.LoadScene(WhereIam.instance.Phase);
         ScoreManager.instance.ResetCurrentPointsPlayer();
     }

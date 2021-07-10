@@ -33,7 +33,6 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         AddToList();
-        AudioManager.Instance.PlaySoundEffect(8);
     }
 
     public void ResetPlayerPrefs()
@@ -44,6 +43,7 @@ public class LevelManager : MonoBehaviour
     void ClickLevel(string level)
     {
         AudioManager.Instance.StopCurrentBackgroundMusic();
+        AudioManager.Instance.PlaySoundEffect(9);
         WhereIam.instance.IsTransitinScenesTrue();
         StartCoroutine("StartingTransition", level);
     }
@@ -94,7 +94,6 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator StartingTransition(string level)
     {
-
         AudioManager.Instance.PlaySoundEffect(9);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(level);

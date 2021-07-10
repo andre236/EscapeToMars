@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
 
-
     private float _volumeTemp = 0.001f;
     private bool _isFadeOut = false;
 
@@ -17,9 +16,8 @@ public class AudioManager : MonoBehaviour {
     private Button _muteSoundButton;
     private Animator _muteSoundAnim;
 
-
-
     public bool IsMuted { get; private set; } = false;
+    public bool IsPlayingBGM { get; private set; }
 
     public static AudioManager Instance;
 
@@ -54,8 +52,6 @@ public class AudioManager : MonoBehaviour {
         _muteSoundAnim = _muteSoundButton.GetComponent<Animator>();
         _muteSoundAnim.SetBool("isMuted", IsMuted);
         _muteSoundButton.onClick.AddListener(MuteDesmuteAllSounds);
-        
-
     }
 
     void Update()
@@ -81,11 +77,11 @@ public class AudioManager : MonoBehaviour {
 
 
     public void PlayBackgroundMusic(int indexBGM) {
-        
         for(int i = 1; i < _backgroundMusics.Length; i++)
         {
             _backgroundMusics[i].Stop();
         }
+
         _backgroundMusics[indexBGM + 1].Play();
         _backgroundMusics[indexBGM + 1].mute = IsMuted;
         _backgroundMusics[indexBGM + 1].pitch = 1f;
@@ -176,6 +172,22 @@ public class AudioManager : MonoBehaviour {
 
     }
 
-
+    public void CheckBGMisPlaying()
+    {
+        for(int i = 0; i < _backgroundMusics.Length; i++)
+        {
+            if (_backgroundMusics[i].isPlaying)
+            {
+                IsPlayingBGM = true;
+                break;
+            }
+            else
+            {
+                IsPlayingBGM = false;
+            }
+                
+        }
+         
+    }
 
 }

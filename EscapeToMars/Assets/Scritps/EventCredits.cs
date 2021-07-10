@@ -27,25 +27,7 @@ public class EventCredits : MonoBehaviour
 
     private void Awake()
     {
-        _cameraMain = GameObject.FindGameObjectWithTag("MainCamera");
-        _followCamera = _cameraMain.GetComponent<FollowCamera>();
-        _differentsPlayer = GameObject.Find("DifferentsPlayer");
-        _fadeIn = GameObject.Find("FadeIn").GetComponent<Animator>();
-        _tksScreen = GameObject.Find("TKSscreen");
-        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _creditsSpecialThanks = GameObject.Find("SpecialThanksTXT");
-    }
-
-    private void Start()
-    {
-        _differentsPlayer.SetActive(false);
-        _followCamera.enabled = false;
-        _scaleChange = new Vector3(-0.01f, -0.01f, -0.01f);
-        _isScaleChanging = false;
-        _fadeIn.gameObject.SetActive(false);
-        _tksScreen.SetActive(false);
-        _creditsSpecialThanks.SetActive(false);
+        StartCoroutine("CooldownToReference");
     }
 
     private void FixedUpdate()
@@ -161,5 +143,25 @@ public class EventCredits : MonoBehaviour
         yield return new WaitForSeconds(3);
         AudioManager.Instance.PlayBackgroundMusicInTheEnd(0);
         AudioManager.Instance.SetStandardVolumeSound();
+    }
+
+    IEnumerator CooldownToReference()
+    {
+        yield return new WaitForSeconds(2f);
+        _cameraMain = GameObject.FindGameObjectWithTag("MainCamera");
+        _followCamera = _cameraMain.GetComponent<FollowCamera>();
+        _differentsPlayer = GameObject.Find("DifferentsPlayer");
+        _fadeIn = GameObject.Find("FadeIn").GetComponent<Animator>();
+        _tksScreen = GameObject.Find("TKSscreen");
+        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _creditsSpecialThanks = GameObject.Find("SpecialThanksTXT");
+        _differentsPlayer.SetActive(false);
+        _followCamera.enabled = false;
+        _scaleChange = new Vector3(-0.01f, -0.01f, -0.01f);
+        _isScaleChanging = false;
+        _fadeIn.gameObject.SetActive(false);
+        _tksScreen.SetActive(false);
+        _creditsSpecialThanks.SetActive(false);
     }
 }

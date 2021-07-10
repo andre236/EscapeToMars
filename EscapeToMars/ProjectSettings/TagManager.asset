@@ -23,6 +23,8 @@ TagManager:
   - ButtonLaser
   - AbleStars
   - AbleStar
+  - BGM
+  - SFX
   layers:
   - Default
   - TransparentFX
