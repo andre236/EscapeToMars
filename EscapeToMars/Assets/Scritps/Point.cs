@@ -37,7 +37,7 @@ public class Point : MonoBehaviour {
             AudioManager.Instance.PlaySoundEffect(1);
             ScoreManager.instance.IncreasePointsPlayer();
             
-            GameManager.instance.TriggerFlag();
+            GameManager.Instance.TriggerFlag();
             Destroy(gameObject, 1f);
         }
 
@@ -47,7 +47,7 @@ public class Point : MonoBehaviour {
             Destroy(_particlesPoints, 0.5f);
             AudioManager.Instance.PlaySoundEffect(1, 1.2f);
             ScoreManager.instance.IncreasePointsPlayer();
-            GameManager.instance.SecondStar();
+            GameManager.Instance.SecondStar();
             Destroy(gameObject, 1f);
         }
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("PointC")) {

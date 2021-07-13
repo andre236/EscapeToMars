@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour {
 
+    [SerializeField]
+    private float _moveSpeed = 3f;
+
     private GameObject followObject;
     private Vector2 threshold;
     private Rigidbody2D rb;
-
-    public float speed = 3f;
-
+    
     public Vector2 followOffset = new Vector2(6, 3);
-
 
     private void Awake() {
         StartCoroutine("Reference");
@@ -28,7 +28,7 @@ public class FollowCamera : MonoBehaviour {
         if(Mathf.Abs(yDifference) >= threshold.y) {
             newPosition.y = follow.y;
         }
-        float moveSpeed = rb.velocity.magnitude > speed ? rb.velocity.magnitude : speed;
+        float moveSpeed = rb.velocity.magnitude > _moveSpeed ? rb.velocity.magnitude : _moveSpeed;
         transform.position = Vector3.MoveTowards(transform.position, newPosition, moveSpeed*Time.deltaTime);
 
     }

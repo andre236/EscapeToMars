@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         _playerAnim.SetBool("isDying", true);
         Destroy(GetComponent<BoxCollider2D>());
         AudioManager.Instance.PlaySoundEffect(2);
-        GameManager.instance.GameOver();
+        GameManager.Instance.GameOver();
     }
 
 

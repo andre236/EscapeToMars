@@ -31,11 +31,11 @@ public class WhereIam : MonoBehaviour
     void Start()
     {
         _trasitionSceneAnim.SetBool("Starting", false);
-
     }
 
     void CheckPhase(Scene scene, LoadSceneMode sceneMode)
     {
+        AudioManager.Instance.PlaySoundEffect(8);
         Phase = SceneManager.GetActiveScene().buildIndex;
         _trasitionSceneAnim = GameObject.Find("TransitionScene").GetComponent<Animator>();
 

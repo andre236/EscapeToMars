@@ -3382,7 +3382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f1aa366a97e2444912f801b0dac88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  _moveSpeed: 5
   followOffset: {x: 13, y: 3}
 --- !u!20 &519420031
 Camera:
@@ -6849,9 +6849,9 @@ RectTransform:
   - {fileID: 1913131700}
   - {fileID: 1558130696}
   - {fileID: 357373874}
+  - {fileID: 1464246104}
   - {fileID: 246794905}
   - {fileID: 1543439789}
-  - {fileID: 1464246104}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8832,7 +8832,7 @@ RectTransform:
   - {fileID: 1812735348}
   - {fileID: 1978164225}
   m_Father: {fileID: 1149619115}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour {
-
-    private float _volumeTemp = 0.001f;
+public class AudioManager : MonoBehaviour
+{
+    private int _currentMusic;
     private bool _isFadeOut = false;
+    
 
     private AudioSource[] _backgroundMusics;
     private AudioSource[] _soundsEffects;
@@ -21,12 +22,15 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager Instance;
 
-    void Awake() {
-        if (Instance == null) {
+    void Awake()
+    {
+        if (Instance == null)
+        {
             Instance = this;
-            DontDestroyOnLoad(gameObject);          
+            DontDestroyOnLoad(gameObject);
         }
-        else {
+        else
+        {
             Destroy(gameObject);
         }
 
@@ -57,27 +61,18 @@ public class AudioManager : MonoBehaviour {
     void Update()
     {
         _muteSoundAnim.SetBool("isMuted", IsMuted);
-
-        if (_isFadeOut && _volumeTemp > 0)
-        {
-            _volumeTemp -= Time.deltaTime * 0.1f;
-            Debug.Log(_volumeTemp);
-        }
-        else
-        {
-            _isFadeOut = false;
-            _volumeTemp = 0.1f;
-        }
     }
 
-    public void PlaySoundEffect(int indexSFX, float pitchSFX = 1, ulong timeToPlay = 0) {
+    public void PlaySoundEffect(int indexSFX, float pitchSFX = 1, ulong timeToPlay = 0)
+    {
         _soundsEffects[indexSFX + 1].pitch = pitchSFX;
         _soundsEffects[indexSFX + 1].Play();
     }
 
 
-    public void PlayBackgroundMusic(int indexBGM) {
-        for(int i = 1; i < _backgroundMusics.Length; i++)
+    public void PlayBackgroundMusic(int indexBGM)
+    {
+        for (int i = 1; i < _backgroundMusics.Length; i++)
         {
             _backgroundMusics[i].Stop();
         }
@@ -85,61 +80,65 @@ public class AudioManager : MonoBehaviour {
         _backgroundMusics[indexBGM + 1].Play();
         _backgroundMusics[indexBGM + 1].mute = IsMuted;
         _backgroundMusics[indexBGM + 1].pitch = 1f;
-
+        _currentMusic = indexBGM + 1;
     }
 
-    public void PlayBackgroundMusicInTheEnd(int indexBGM)
+    public void PlayBackgroundMusicInTheEnd()
     {
         for (int i = 1; i < _backgroundMusics.Length; i++)
         {
             _backgroundMusics[i].Stop();
         }
-        _backgroundMusics[indexBGM + 1].Play();
-        _backgroundMusics[indexBGM + 1].mute = IsMuted;
-        _backgroundMusics[indexBGM + 1].pitch = 0.8f;
+        _backgroundMusics[1].Play();
+        _backgroundMusics[1].mute = IsMuted;
+        _backgroundMusics[1].pitch = 0.8f;
     }
 
-    public void StopCurrentBackgroundMusic() {
+    public void StopCurrentBackgroundMusic()
+    {
         for (int i = 1; i < _backgroundMusics.Length; i++)
         {
             _backgroundMusics[i].Stop();
         }
     }
 
-    public void StopFadeOutCurrentBackgroundMusic()
+    public void StartFadeOut()
     {
-        float CurrentVolume = _backgroundMusics[1].volume;
-        _backgroundMusics[2].volume = CurrentVolume * _volumeTemp;
-        _isFadeOut = true;
+        StartCoroutine("FadeOutVolume");
     }
 
     public void SetStandardVolumeSound()
     {
-        for(int i = 1; i < 5; i++)
+        for (int i = 1; i < 5; i++)
         {
             _backgroundMusics[i].volume = 0.25f;
         }
     }
 
-    public void MuteDesmuteAllSounds() {
-    
-
-        for (int i = 0; i < _soundsEffects.Length; i++) {
-            if (_soundsEffects[i].mute == false) {
+    public void MuteDesmuteAllSounds()
+    {
+        for (int i = 0; i < _soundsEffects.Length; i++)
+        {
+            if (_soundsEffects[i].mute == false)
+            {
                 _soundsEffects[i].mute = true;
                 IsMuted = true;
             }
-            else {
+            else
+            {
                 _soundsEffects[i].mute = false;
                 IsMuted = false;
             }
         }
 
-        for (int i = 0; i < _backgroundMusics.Length; i++) {
-            if (_backgroundMusics[i].mute == false) {
+        for (int i = 0; i < _backgroundMusics.Length; i++)
+        {
+            if (_backgroundMusics[i].mute == false)
+            {
                 _backgroundMusics[i].mute = true;
             }
-            else {
+            else
+            {
                 _backgroundMusics[i].mute = false;
             }
         }
@@ -148,24 +147,32 @@ public class AudioManager : MonoBehaviour {
 
     }
 
-    public void MuteDesmuteSoundEffect() {
-        for (int i = 0; i < _soundsEffects.Length; i++) {
-            if (_soundsEffects[i].mute) {
+    public void MuteDesmuteSoundEffect()
+    {
+        for (int i = 0; i < _soundsEffects.Length; i++)
+        {
+            if (_soundsEffects[i].mute)
+            {
                 _soundsEffects[i].mute = false;
             }
-            else {
+            else
+            {
                 _soundsEffects[i].mute = true;
             }
         }
 
     }
 
-    public void MuteDesmuteBackgroundMusic() {
-        for (int i = 0; i < _backgroundMusics.Length; i++) {
-            if (_backgroundMusics[i].mute) {
+    public void MuteDesmuteBackgroundMusic()
+    {
+        for (int i = 0; i < _backgroundMusics.Length; i++)
+        {
+            if (_backgroundMusics[i].mute)
+            {
                 _backgroundMusics[i].mute = false;
             }
-            else {
+            else
+            {
                 _backgroundMusics[i].mute = true;
             }
         }
@@ -174,20 +181,28 @@ public class AudioManager : MonoBehaviour {
 
     public void CheckBGMisPlaying()
     {
-        for(int i = 0; i < _backgroundMusics.Length; i++)
+        if (_backgroundMusics[_currentMusic].isPlaying)
         {
-            if (_backgroundMusics[i].isPlaying)
-            {
-                IsPlayingBGM = true;
-                break;
-            }
-            else
-            {
-                IsPlayingBGM = false;
-            }
-                
+            IsPlayingBGM = true;
         }
-         
+        else
+        {
+            IsPlayingBGM = false;
+        }
+    }
+
+    IEnumerator FadeOutVolume()
+    {
+        _isFadeOut = true;
+        while (_isFadeOut)
+        {
+            if (_backgroundMusics[2].volume <= 0.00)
+            {
+                _isFadeOut = false;
+            }
+            _backgroundMusics[2].volume -= 0.025f;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
 }

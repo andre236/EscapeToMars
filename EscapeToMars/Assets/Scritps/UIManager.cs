@@ -24,14 +24,14 @@ public class UIManager : MonoBehaviour
 
     private Animator _uiWinStarsAnim;
 
-    public static UIManager instance;
+    public static UIManager Instance;
 
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.instance.GameStarted && !EventCredits.instance.FinalCredits)
+        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.GameStarted)
         {
             PauseGameUI();
         }
@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
 
     void GetData()
     {
-        if(WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 2)
+        if (WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 2)
         {
             _uiLoseLevelGO = GameObject.Find("Canvas").transform.Find("UILoseLevel").gameObject;
             _uiWinLevelGO = GameObject.Find("Canvas").transform.Find("UIWinLevel").gameObject;
@@ -83,21 +83,21 @@ public class UIManager : MonoBehaviour
 
             _uiWinStarsAnim = _uiWinLevelGO.GetComponent<Animator>();
 
-            _nextButton.onClick.AddListener(GameManager.instance.NextPhase);
-            _restartWinButton.onClick.AddListener(GameManager.instance.PlayAgainPhase);
-            _restartLoseButton.onClick.AddListener(GameManager.instance.PlayAgainPhase);
-            _restartPauseButton.onClick.AddListener(GameManager.instance.PlayAgainPhase);
+            _nextButton.onClick.AddListener(GameManager.Instance.NextPhase);
+            _restartWinButton.onClick.AddListener(GameManager.Instance.PlayAgainPhase);
+            _restartLoseButton.onClick.AddListener(GameManager.Instance.PlayAgainPhase);
+            _restartPauseButton.onClick.AddListener(GameManager.Instance.PlayAgainPhase);
 
-            _quitPauseButton.onClick.AddListener(GameManager.instance.GoToLevelSelect);
-            _quitWinButton.onClick.AddListener(GameManager.instance.GoToLevelSelect);
-            _quitLoseButton.onClick.AddListener(GameManager.instance.GoToLevelSelect);
+            _quitPauseButton.onClick.AddListener(GameManager.Instance.GoToLevelSelect);
+            _quitWinButton.onClick.AddListener(GameManager.Instance.GoToLevelSelect);
+            _quitLoseButton.onClick.AddListener(GameManager.Instance.GoToLevelSelect);
 
             _pauseButton.onClick.AddListener(PauseGameUI);
             _resumeButton.onClick.AddListener(ReturnFromPauseGame);
 
             TurnOffUI();
         }
-       
+
     }
 
     public void GameOverUI()
@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        if (GameManager.instance.Win == false)
+        if (GameManager.Instance.Win == false)
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(WhereIam.instance.Phase);
@@ -129,8 +129,6 @@ public class UIManager : MonoBehaviour
         _backgroundShadowImage.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
-
-
 
     public void ReturnFromPauseGame()
     {

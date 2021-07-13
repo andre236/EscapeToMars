@@ -11,8 +11,11 @@ public class MainMenu : MonoBehaviour
         _trasitionSceneAnim = GameObject.Find("TransitionScene").GetComponent<Animator>();
     }
 
+
+
     public void LoadSelectPhaseMenu(string nameScene)
     {
+        AudioManager.Instance.PlaySoundEffect(9);
         _trasitionSceneAnim.SetBool("Starting", true);
         StartCoroutine(LoadingTransitionScene(nameScene));
     }

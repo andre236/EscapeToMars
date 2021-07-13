@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private GameObject _player;
     private Transform _initialPosition;
 
-    public static GameManager instance;
+    public static GameManager Instance;
 
     public bool GameStarted { get; private set; }
     public bool Win { get; private set; }
@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -49,12 +49,12 @@ public class GameManager : MonoBehaviour
             _lastStepGO = GameObject.Find("LastStep");
 
             InitializingGame();
-        }
+        } 
+        
     }
 
     public void InitializingGame()
     {
-        AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 2));
         _flagGO.SetActive(false);
         _secondStepGO.SetActive(false);
         _lastStepGO.SetActive(false);
@@ -65,14 +65,14 @@ public class GameManager : MonoBehaviour
     {
         if (GameStarted == true && Win == false)
         {
-            UIManager.instance.GameOverUI();
+            UIManager.Instance.GameOverUI();
         }
         GameStarted = false;
     }
 
     public void SuccessfullyLevel(int numberStars)
     {
-        UIManager.instance.SuccessfullyLevelUI(numberStars);
+        UIManager.Instance.SuccessfullyLevelUI(numberStars);
         GameStarted = false;
         Win = true;
         Time.timeScale = 1;
@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
         {
             int temp = WhereIam.instance.Phase + 1;
             ScoreManager.instance.ResetCurrentPointsPlayer();
+            AudioManager.Instance.StopCurrentBackgroundMusic();
+            AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 4));
             Time.timeScale = 1;
             GameStarted = false;
             Win = false;
@@ -97,11 +99,11 @@ public class GameManager : MonoBehaviour
         GameStarted = false;
         Win = false;
         AudioManager.Instance.CheckBGMisPlaying();
-        if (!AudioManager.Instance.IsPlayingBGM)
+        if (AudioManager.Instance.IsPlayingBGM == false)
         {
-            AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 5));
+            AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 4));
         }
-        //AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 2));
+
         SceneManager.LoadScene(WhereIam.instance.Phase);
         ScoreManager.instance.ResetCurrentPointsPlayer();
     }
@@ -120,7 +122,6 @@ public class GameManager : MonoBehaviour
 
     public void TriggerFlag()
     {
-
         if (ScoreManager.instance.CurrentPointsPlayer == ScoreManager.instance.TotalPointsA)
         {
             AudioManager.Instance.PlaySoundEffect(5);

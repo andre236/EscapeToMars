@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        bool CanMove = !_player.IsDead && !GameManager.instance.IsLoadingStep && !GameManager.instance.Win && GameManager.instance.GameStarted && !IsMovingByArrow && !IsTeleporting && !CantMove;
+        bool CanMove = !_player.IsDead && !GameManager.Instance.IsLoadingStep && !GameManager.Instance.Win && GameManager.Instance.GameStarted && !IsMovingByArrow && !IsTeleporting && !CantMove;
 
         if (CanMove)
         {
@@ -55,12 +55,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_player.IsDead && !GameManager.instance.IsLoadingStep && !GameManager.instance.Win && GameManager.instance.GameStarted && !IsTeleporting)
+        if (!_player.IsDead && !GameManager.Instance.IsLoadingStep && !GameManager.Instance.Win && GameManager.Instance.GameStarted && !IsTeleporting)
         {
             ToMove();
         }
 
-        if (GameManager.instance.Win)
+        if (GameManager.Instance.Win)
         {
             MoveToFlag();
         }
@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
         var rayCastLeftA = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.16f), Vector2.left, 0.6f, _permissionLayersMovement);
         var rayCastLeftB = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + -0.28f), Vector2.left, 0.6f, _permissionLayersMovement);
 
-        bool ConditionsPlayerToMove = !_player.IsDead && !GameManager.instance.IsLoadingStep;
+        bool ConditionsPlayerToMove = !_player.IsDead && !GameManager.Instance.IsLoadingStep;
 
 
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) && ConditionsPlayerToMove)

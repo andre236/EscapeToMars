@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!GameManager.instance.IsLoadingStep && GameManager.instance.GameStarted)
+        if (!GameManager.Instance.IsLoadingStep && GameManager.Instance.GameStarted)
         {
             ToMove();
         }

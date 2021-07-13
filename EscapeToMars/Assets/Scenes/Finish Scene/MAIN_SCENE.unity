@@ -473,6 +473,11 @@ PrefabInstance:
       propertyPath: m_Pitch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5927340571942349718, guid: 5806e808f9735b946884c0b2c9b8849f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 6529562605120174079, guid: 5806e808f9735b946884c0b2c9b8849f,
         type: 3}
       propertyPath: m_PlayOnAwake

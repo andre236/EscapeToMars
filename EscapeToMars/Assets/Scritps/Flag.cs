@@ -12,7 +12,7 @@ public class Flag : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA && !_isLastLevel)
         {
-            GameManager.instance.SuccessfullyLevel(1);
+            GameManager.Instance.SuccessfullyLevel(1);
             PlayerPrefs.SetInt("Level" + tempPhase, 1);
             
             if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 1)
@@ -25,7 +25,7 @@ public class Flag : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA + ScoreManager.instance.TotalPointsB && !_isLastLevel)
         {
-            GameManager.instance.SuccessfullyLevel(2);
+            GameManager.Instance.SuccessfullyLevel(2);
             PlayerPrefs.SetInt("Level" + tempPhase, 1);
             if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 2)
             {
@@ -38,7 +38,7 @@ public class Flag : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA + ScoreManager.instance.TotalPointsB + ScoreManager.instance.TotalPointsC && !_isLastLevel)
         {
-            GameManager.instance.SuccessfullyLevel(3);
+            GameManager.Instance.SuccessfullyLevel(3);
             PlayerPrefs.SetInt("Level" + tempPhase, 1);
             if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 3)
             {
