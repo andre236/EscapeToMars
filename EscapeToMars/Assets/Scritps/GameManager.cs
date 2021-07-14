@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
 
     public void InitializingGame()
     {
+        AudioManager.Instance.CheckBGMisPlaying();
+        if (AudioManager.Instance.IsPlayingBGM == false)
+        {
+            AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 4));
+        }
         _flagGO.SetActive(false);
         _secondStepGO.SetActive(false);
         _lastStepGO.SetActive(false);

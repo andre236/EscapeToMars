@@ -59,6 +59,7 @@ public class Laser : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !_isActivated)
         {
+            AudioManager.Instance.PlaySoundEffect(10);
             ActivateDeactivate(true);
         }
     }
