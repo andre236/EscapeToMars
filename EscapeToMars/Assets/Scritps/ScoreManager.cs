@@ -35,21 +35,21 @@ public class ScoreManager : MonoBehaviour {
  
     void Load(Scene scene, LoadSceneMode mode) {
 
-        if (WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 1) {
+        if (WhereIam.Instance.Phase != 0 && WhereIam.Instance.Phase != 1) {
             TotalPointsA = GameObject.FindGameObjectsWithTag("Point").Length;
         }
     }
 
     public void ReferencePointsB() {
 
-        if (WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 1) {
+        if (WhereIam.Instance.Phase != 0 && WhereIam.Instance.Phase != 1) {
             TotalPointsB = GameObject.FindGameObjectsWithTag("PointB").Length;
         }
     }
 
     public void ReferencePointsC() {
 
-        if (WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 1) {
+        if (WhereIam.Instance.Phase != 0 && WhereIam.Instance.Phase != 1) {
             TotalPointsC = GameObject.FindGameObjectsWithTag("PointC").Length;
         }
     }

@@ -7,8 +7,16 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
     private int _currentMusic;
+
+    private float[] _standardVolumeBGM;
+    private float[] _standardVolumeSFX;
+
+    [Range(0, 1)]
+    private float _currentVolumeBGM;
+    [Range(0, 1)]
+    private float _currentVolumeSFX;
+
     private bool _isFadeOut = false;
-    
 
     private AudioSource[] _backgroundMusics;
     private AudioSource[] _soundsEffects;
@@ -34,10 +42,9 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-
         _backgroundMusics = GameObject.Find("BackgroundMusics").GetComponentsInChildren<AudioSource>();
         _soundsEffects = GameObject.Find("SoundEffects").GetComponentsInChildren<AudioSource>();
-
+        
         SceneManager.sceneLoaded += Load;
 
 
@@ -63,12 +70,24 @@ public class AudioManager : MonoBehaviour
         _muteSoundAnim.SetBool("isMuted", IsMuted);
     }
 
+    void SaveStandardVolume()
+    {
+        for (int i = 1; i < _backgroundMusics.Length; i++)
+        {
+            _standardVolumeBGM[i] = _backgroundMusics[i].volume;
+        }
+        for (int i = 0; i < _soundsEffects.Length; i++)
+        {
+            _standardVolumeSFX[i] = _soundsEffects[i].volume;
+        }
+
+    }
+
     public void PlaySoundEffect(int indexSFX, float pitchSFX = 1, ulong timeToPlay = 0)
     {
         _soundsEffects[indexSFX + 1].pitch = pitchSFX;
         _soundsEffects[indexSFX + 1].Play();
     }
-
 
     public void PlayBackgroundMusic(int indexBGM)
     {

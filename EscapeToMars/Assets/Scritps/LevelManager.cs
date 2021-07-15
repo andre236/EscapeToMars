@@ -56,7 +56,7 @@ public class LevelManager : MonoBehaviour
     {
         AudioManager.Instance.StopCurrentBackgroundMusic();
         AudioManager.Instance.PlaySoundEffect(9);
-        WhereIam.instance.IsTransitinScenesTrue();
+        WhereIam.Instance.IsTransitinScenesTrue();
         StartCoroutine("StartingTransition", level);
     }
 

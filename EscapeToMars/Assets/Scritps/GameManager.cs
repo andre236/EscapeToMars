@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void GetData()
     {
-        if (WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 2)
+        if (WhereIam.Instance.Phase != 1 && WhereIam.Instance.Phase != 0 && WhereIam.Instance.Phase != 2)
         {
             _initialPosition = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Transform>();
             Instantiate(SkinManager.instance.SkinsPrefabs[PlayerPrefs.GetInt("IndexSkin")], _initialPosition);
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     {
         if (Win)
         {
-            int temp = WhereIam.instance.Phase + 1;
+            int temp = WhereIam.Instance.Phase + 1;
             ScoreManager.instance.ResetCurrentPointsPlayer();
             AudioManager.Instance.StopCurrentBackgroundMusic();
             AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 4));
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
             AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 4));
         }
 
-        SceneManager.LoadScene(WhereIam.instance.Phase);
+        SceneManager.LoadScene(WhereIam.Instance.Phase);
         ScoreManager.instance.ResetCurrentPointsPlayer();
     }
 

@@ -11,13 +11,13 @@ public class WhereIam : MonoBehaviour
 
     public int Phase = -1;
 
-    public static WhereIam instance;
+    public static WhereIam Instance;
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else

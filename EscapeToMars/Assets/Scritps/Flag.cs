@@ -7,8 +7,8 @@ public class Flag : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        int tempPhase = WhereIam.instance.Phase - 2; // 1 ( Subtract "2" for Scenes: Main Scene, Shop Scene and Level Manager Scene.)
-        int tempNexPhase = WhereIam.instance.Phase - 1; // 2
+        int tempPhase = WhereIam.Instance.Phase - 2; // 1 ( Subtract "2" for Scenes: Main Scene, Shop Scene and Level Manager Scene.)
+        int tempNexPhase = WhereIam.Instance.Phase - 1; // 2
 
         if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA && !_isLastLevel)
         {

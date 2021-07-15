@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
 
     void GetData()
     {
-        if (WhereIam.instance.Phase != 1 && WhereIam.instance.Phase != 0 && WhereIam.instance.Phase != 2)
+        if (WhereIam.Instance.Phase != 1 && WhereIam.Instance.Phase != 0 && WhereIam.Instance.Phase != 2)
         {
             _uiLoseLevelGO = GameObject.Find("Canvas").transform.Find("UILoseLevel").gameObject;
             _uiWinLevelGO = GameObject.Find("Canvas").transform.Find("UIWinLevel").gameObject;
@@ -116,7 +116,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance.Win == false)
         {
             Time.timeScale = 1;
-            SceneManager.LoadScene(WhereIam.instance.Phase);
+            SceneManager.LoadScene(WhereIam.Instance.Phase);
             ScoreManager.instance.ResetCurrentPointsPlayer();
         }
         Time.timeScale = 1;
