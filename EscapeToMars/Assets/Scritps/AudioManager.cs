@@ -111,6 +111,7 @@ public class AudioManager : MonoBehaviour
         _backgroundMusics[1].Play();
         _backgroundMusics[1].mute = IsMuted;
         _backgroundMusics[1].pitch = 0.8f;
+        _backgroundMusics[1].volume = 0.25f;
     }
 
     public void StopCurrentBackgroundMusic()
@@ -219,7 +220,11 @@ public class AudioManager : MonoBehaviour
             {
                 _isFadeOut = false;
             }
-            _backgroundMusics[2].volume -= 0.025f;
+            for (int i = 1; i < 5; i++)
+            {
+                _backgroundMusics[i].volume -= 0.25f;
+            }
+            //_backgroundMusics[2].volume -= 0.025f;
             yield return new WaitForSeconds(0.1f);
         }
     }

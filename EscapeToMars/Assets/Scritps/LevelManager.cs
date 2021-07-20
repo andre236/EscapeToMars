@@ -35,22 +35,8 @@ public class LevelManager : MonoBehaviour
         AddToList();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F9))
-        {
-            for(int i = 0; i < 30; i++)
-            {
-                PlayerPrefs.SetInt("Level" + i, 1);
-            }
-            
-        }
-    }
 
-    public void ResetPlayerPrefs()
-    {
-        PlayerPrefs.DeleteAll();
-    }
+
 
     void ClickLevel(string level)
     {
