@@ -1,17 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 public class RedeemSystem : MonoBehaviour
 {
+    private string _codeSkin;
+
     [SerializeField]
     private int _skinPrice, _skinIndexCard;
 
     [SerializeField]
     private bool _isAvailable, _canRedeem, _canEquip, _haveSkin;
-    
+
+
     [SerializeField]
     private Text _equipTXT, _skinPriceTXT;
     private Image _splashArtIMG;
 
+    private void Awake()
+    {
+
+    }
 
     private void Start()
     {
@@ -25,6 +33,7 @@ public class RedeemSystem : MonoBehaviour
             _equipTXT.text = "Equip";
         }
     }
+
 
     void GetData()
     {
@@ -63,6 +72,8 @@ public class RedeemSystem : MonoBehaviour
         }
 
         _skinPriceTXT.text = _skinPrice.ToString();
+
+
     }
 
     public void AcquireSkin()
@@ -100,6 +111,57 @@ public class RedeemSystem : MonoBehaviour
         {
             _equipTXT.text = "Equipped";
         }
+
+    }
+
+    public void RedeemSkinsByKey(string textRedeem)
+    {
+
+        // VAPOR SKIN = vapor_01 == index = 7
+        // DPCB = sthellyeah == index = 5
+        // TANGO = letsdance == index = 6
+        // MEGA A.A = megamanrules == index = 8 e 9
+        DateTime date31ago = DateTime.Parse("31/08/2021 23:59");
+        _codeSkin = textRedeem.ToLower();
+
+
+        if(date31ago > DateTime.Now)
+        {
+            switch (_codeSkin)
+            {
+                case "vapor_01":
+                    CustomManager.Instance.ShowMessageUI("congrats");
+                    PlayerPrefs.SetInt("Have_Skin" + 7, 7);
+                    Debug.Log("Liberou a skin VAPOR!");
+                    break;
+                case "sthellyeah":
+                    CustomManager.Instance.ShowMessageUI("congrats");
+                    PlayerPrefs.SetInt("Have_Skin" + 5, 5);
+                    Debug.Log("Liberou a skin DPCB!");
+                    break;
+                case "letsdance":
+                    CustomManager.Instance.ShowMessageUI("congrats");
+                    PlayerPrefs.SetInt("Have_Skin" + 6, 6);
+                    Debug.Log("Liberou a skin TANGO!");
+                    break;
+                case "megamanrules":
+                    CustomManager.Instance.ShowMessageUI("congrats");
+                    PlayerPrefs.SetInt("Have_Skin" + 8, 8);
+                    PlayerPrefs.SetInt("Have_Skin" + 9, 9);
+                    Debug.Log("Liberou a skin MEGA A.A");
+                    break;
+                default:
+                    CustomManager.Instance.ShowMessageUI("invalid");
+                    break;
+            }
+        }
+        else
+        {
+            CustomManager.Instance.ShowMessageUI("expired");
+        }
+        
+
+ 
 
     }
 
