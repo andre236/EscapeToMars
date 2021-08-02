@@ -13,7 +13,6 @@ public class StarsCollection : MonoBehaviour
         _starsCollection = GameObject.Find("StarsCollectionTXT").GetComponent<Text>();
         TotalStars = GameObject.FindGameObjectsWithTag("AbleStar").Length;
         _starsCollection.text = TotalStars.ToString();
-       
     }
 
     void Start()
@@ -24,7 +23,9 @@ public class StarsCollection : MonoBehaviour
 
     private void Update()
     {
+
         TotalStars = GameObject.FindGameObjectsWithTag("AbleStar").Length;
+
         _starsCollection.text = TotalStars.ToString() + "/90";
         PlayerPrefs.SetInt("TotalStars", TotalStars);
 
