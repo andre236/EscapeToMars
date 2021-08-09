@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
         StartingPrefs();
     }
 
-
+    /*
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F9) && Input.GetKeyDown(KeyCode.O))
@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour
             ResetPlayerPrefs();
         }
     }
-
+    */
     public void ResetPlayerPrefs()
     {
 
@@ -58,6 +58,10 @@ public class MainMenu : MonoBehaviour
         if (!PlayerPrefs.HasKey("IndexSkin"))
         {
             PlayerPrefs.SetInt("IndexSkin", 0);
+        }
+        if (!PlayerPrefs.HasKey("Kills"))
+        {
+            PlayerPrefs.SetInt("Kills", 0);
         }
     }
 

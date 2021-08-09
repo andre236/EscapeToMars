@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
     {
         _currentAnim.SetBool("isDying", true);
         AudioManager.Instance.PlaySoundEffect(4);
+        _player.CountKill();
         Destroy(_enemyCollider);
         Destroy(_pointLight2D);
         StartCoroutine("CooldownDying");
@@ -103,7 +104,6 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.CompareTag("Player") && _player.Stronger)
         {
             Die();

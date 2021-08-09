@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2438895347690089476}
   - component: {fileID: 2438895347690089477}
+  - component: {fileID: 5195800993552114768}
   m_Layer: 0
   m_Name: WhereIam
   m_TagString: Untagged
@@ -47,6 +48,16 @@ MonoBehaviour:
     type: 3}
   _gameManagerGO: {fileID: 20042966317159413, guid: d1872df08bba18643820212e7ec70829,
     type: 3}
-  _skinManagerGO: {fileID: 7173899235181876740, guid: e35457550678a8042abbb9d7073391cc,
-    type: 3}
   Phase: -1
+--- !u!114 &5195800993552114768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438895347690089478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f6d3851fbcce34881766d5e1892e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

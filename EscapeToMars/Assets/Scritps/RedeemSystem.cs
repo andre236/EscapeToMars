@@ -119,7 +119,7 @@ public class RedeemSystem : MonoBehaviour
 
         // VAPOR SKIN = vapor_01 == index = 7
         // DPCB = sthellyeah == index = 5
-        // TANGO = letsdance == index = 6
+        // TANGO = trashvibes == index = 6
         // MEGA A.A = megamanrules == index = 8 e 9
         DateTime date31ago = DateTime.Parse("31/08/2021 23:59");
         _codeSkin = textRedeem.ToLower();
@@ -139,7 +139,7 @@ public class RedeemSystem : MonoBehaviour
                     PlayerPrefs.SetInt("Have_Skin" + 5, 5);
                     Debug.Log("Liberou a skin DPCB!");
                     break;
-                case "letsdance":
+                case "trashvibes":
                     CustomManager.Instance.ShowMessageUI("congrats");
                     PlayerPrefs.SetInt("Have_Skin" + 6, 6);
                     Debug.Log("Liberou a skin TANGO!");

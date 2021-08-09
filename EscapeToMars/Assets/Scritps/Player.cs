@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private GameObject _eletricityGO;
     private Animator _playerAnim;
 
+    public int TotalKills { get; private set; }
     public bool Stronger { get; private set; } = false;
     public bool IsDead { get; private set; } = false;
 
@@ -21,7 +22,6 @@ public class Player : MonoBehaviour
     }
 
 
-
     void ReferenceGameObjects()
     {
         _playerAnim = GetComponent<Animator>();
@@ -29,7 +29,10 @@ public class Player : MonoBehaviour
         _eletricityGO.SetActive(Stronger);
     }
 
-
+    public void CountKill()
+    {
+        PlayerPrefs.SetInt("Kills", PlayerPrefs.GetInt("Kills") + 1);
+    }
 
     public bool GettingStronger(bool state)
     {
