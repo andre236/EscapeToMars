@@ -1,47 +1,86 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class ConfigSettings : MonoBehaviour
 {
+    private GameObject[] _bgms;
+    [SerializeField]
+    private Slider _audioSlider;
+    [SerializeField]
+    private Toggle _fullscreenToggle;
+    [SerializeField]
+    private Dropdown _resolutionDropDown;
+
 
     private void Start()
     {
-        SetResolutionDefault();
-    }
-
-    public void SetResolutionDefault()
-    {
-        if(!PlayerPrefs.HasKey("Resolution1920") || !PlayerPrefs.HasKey("Resolution1440"))
+        AudioManager.Instance.SetStandardVolumeSound();
+        _audioSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        _fullscreenToggle.isOn = Screen.fullScreen;
+        if (!PlayerPrefs.HasKey("ResolutionDropDown"))
         {
-            PlayerPrefs.SetInt("Resolution1920", 1);
-            Screen.SetResolution(1920, 1080, true, 60);
+            PlayerPrefs.SetInt("ResolutionDropDown", 4);
+            _resolutionDropDown.value = PlayerPrefs.GetInt("ResolutionDropDown");
         }
-        
-        if(PlayerPrefs.GetInt("Resolution1920") == 1)
+        else
         {
-            Screen.SetResolution(1920, 1080, Screen.fullScreen, 60);
-        }
-        else if (PlayerPrefs.GetInt("Resolution1440") == 1)
-        {
-            Screen.SetResolution(1440, 810, Screen.fullScreen, 60);
+            _resolutionDropDown.value = PlayerPrefs.GetInt("ResolutionDropDown");
         }
     }
 
-    public void SetResolution1920()
+    private void OnEnable()
     {
-        Debug.Log("Setado 1920");
-        PlayerPrefs.SetInt("Resolution1920", 1);
-        PlayerPrefs.SetInt("Resolution1440", 0);
-        Screen.SetResolution(1920, 1080, Screen.fullScreen, 60);
-
+        _bgms = GameObject.FindGameObjectsWithTag("BGM");
+        AudioManager.Instance.SetStandardVolumeSound();
+        _audioSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        _fullscreenToggle.isOn = Screen.fullScreen;
     }
 
-    public void SetResolution1440()
+
+    public void SetVolume(float volume)
     {
-        Debug.Log("Setado 1440");
-        PlayerPrefs.SetInt("Resolution1920", 0);
-        PlayerPrefs.SetInt("Resolution1440", 1);
-        Screen.SetResolution(1440, 810, Screen.fullScreen, 60);
+        PlayerPrefs.SetFloat("MasterVolume", volume);
+        for (int i = 0; i < _bgms.Length; i++)
+        {
+            _bgms[i].gameObject.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MasterVolume");
+        }
     }
+
+    public void SetResolution(int resolutionIndex)
+    {
+        PlayerPrefs.SetInt("ResolutionDropDown", resolutionIndex);
+        _resolutionDropDown.value = PlayerPrefs.GetInt("ResolutionDropDown");
+
+        switch (resolutionIndex)
+        {
+            case 0:
+                Screen.SetResolution(1920, 1080, Screen.fullScreen);
+                break;
+            case 1:
+                Screen.SetResolution(1728, 972, Screen.fullScreen);
+                break;
+            case 2:
+                Screen.SetResolution(1536 , 864, Screen.fullScreen);
+                break;
+            case 3:
+                Screen.SetResolution(1440 , 810, Screen.fullScreen);
+                break;
+            case 4:
+                Screen.SetResolution(1344 , 756, Screen.fullScreen);
+                break;
+            case 5:
+                Screen.SetResolution(1152 , 648, Screen.fullScreen);
+                break;
+            case 6:
+                Screen.SetResolution(960 , 540, Screen.fullScreen);
+                break;
+            default:
+                Screen.SetResolution(1440, 810, Screen.fullScreen);
+                break;
+        }
+    }
+
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;

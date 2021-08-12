@@ -10,6 +10,11 @@ public class Flag : MonoBehaviour
         int tempPhase = WhereIam.Instance.Phase - 2; // 1 ( Subtract "2" for Scenes: Main Scene, Shop Scene and Level Manager Scene.)
         int tempNexPhase = WhereIam.Instance.Phase - 1; // 2
 
+        SteamAchievement.Instance.SetAchieveOneStar();
+        SteamAchievement.Instance.SetAchieveTwoStars();
+        SteamAchievement.Instance.SetAchieveThreeStars();
+        SteamAchievement.Instance.SettingAchievementsLevels();
+
         if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA && !_isLastLevel)
         {
             GameManager.Instance.SuccessfullyLevel(1);

@@ -11,11 +11,6 @@ public class AudioManager : MonoBehaviour
     private float[] _standardVolumeBGM;
     private float[] _standardVolumeSFX;
 
-    [Range(0, 1)]
-    private float _currentVolumeBGM;
-    [Range(0, 1)]
-    private float _currentVolumeSFX;
-
     private bool _isFadeOut = false;
 
     private AudioSource[] _backgroundMusics;
@@ -54,7 +49,9 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        SetStandardVolumeSound();
         PlayBackgroundMusic(0);
+        
     }
 
     void Load(Scene scene, LoadSceneMode loadSceneMode)
@@ -129,10 +126,22 @@ public class AudioManager : MonoBehaviour
 
     public void SetStandardVolumeSound()
     {
-        for (int i = 1; i < 5; i++)
+        if (!PlayerPrefs.HasKey("MasterVolume"))
         {
-            _backgroundMusics[i].volume = 0.25f;
+            PlayerPrefs.SetFloat("MasterVolume", 0.50f);
+            for (int i = 1; i < 5; i++)
+            {
+                _backgroundMusics[i].volume = PlayerPrefs.GetFloat("MasterVolume");
+            }
         }
+        else
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                _backgroundMusics[i].volume = PlayerPrefs.GetFloat("MasterVolume");
+            }
+        }
+      
     }
 
     public void MuteDesmuteAllSounds()
