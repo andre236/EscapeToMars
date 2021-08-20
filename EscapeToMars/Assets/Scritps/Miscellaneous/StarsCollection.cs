@@ -23,7 +23,6 @@ public class StarsCollection : MonoBehaviour
 
     private void Update()
     {
-
         TotalStars = GameObject.FindGameObjectsWithTag("AbleStar").Length;
 
         _starsCollection.text = TotalStars.ToString() + "/90";

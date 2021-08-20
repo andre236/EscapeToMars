@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Managers;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,7 @@ public class WhereIam : MonoBehaviour
 
     private Animator _trasitionSceneAnim;
 
-    public int Phase = -1;
+    public int Phase;
 
     public static WhereIam Instance;
 
@@ -24,7 +25,7 @@ public class WhereIam : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        Phase = SceneManager.GetActiveScene().buildIndex;
         SceneManager.sceneLoaded += CheckPhase;
     }
 
@@ -58,7 +59,6 @@ public class WhereIam : MonoBehaviour
 
     public void LoadSkinManager()
     {
-        //  _trasitionSceneAnim.SetBool("Starting", true);
         StartCoroutine("LoadingTransitionSceneSkin");
     }
 

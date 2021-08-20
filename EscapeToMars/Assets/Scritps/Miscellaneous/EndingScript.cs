@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Managers;
 
 public class EndingScript : MonoBehaviour
 {
@@ -67,7 +68,7 @@ public class EndingScript : MonoBehaviour
         _pauseButton.gameObject.SetActive(false);
         AudioManager.Instance.StartFadeOut();
         yield return new WaitForSeconds(3f);
-        AudioManager.Instance.SetStandardVolumeSound();
+        AudioManager.Instance.SetStandardBGMVolumeSound();
         AudioManager.Instance.PlayBackgroundMusicInTheEnd();
         yield return new WaitForSeconds(5f);
         _specialThanksTXT.gameObject.SetActive(true);

@@ -3285,9 +3285,9 @@ RectTransform:
   - {fileID: 234710640}
   - {fileID: 208306442}
   - {fileID: 1489666694}
+  - {fileID: 2082548623}
   - {fileID: 920336063}
   - {fileID: 1232768644}
-  - {fileID: 2082548623}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10296,7 +10296,7 @@ RectTransform:
   - {fileID: 112092147}
   - {fileID: 1730987021}
   m_Father: {fileID: 636878948}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

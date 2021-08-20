@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Entities;
+using Managers;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {

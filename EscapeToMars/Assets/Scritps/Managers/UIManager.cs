@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Managers;
 
 public class UIManager : MonoBehaviour
 {

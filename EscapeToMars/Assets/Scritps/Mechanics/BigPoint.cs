@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Entities;
+using Managers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

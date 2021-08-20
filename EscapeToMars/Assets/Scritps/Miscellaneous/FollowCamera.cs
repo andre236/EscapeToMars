@@ -6,6 +6,8 @@ public class FollowCamera : MonoBehaviour {
     [SerializeField]
     private float _moveSpeed = 3f;
 
+    private bool _isLoadingScene = true;
+
     private GameObject followObject;
     private Vector2 threshold;
     private Rigidbody2D rb;
@@ -17,6 +19,7 @@ public class FollowCamera : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        if (_isLoadingScene){return;}
         Vector2 follow = followObject.transform.position;
         float xDifference = Vector2.Distance(Vector2.right * transform.position.x, Vector2.right * follow.x);
         float yDifference = Vector2.Distance(Vector2.up * transform.position.y, Vector2.up * follow.y);
@@ -52,5 +55,6 @@ public class FollowCamera : MonoBehaviour {
         followObject = GameObject.FindGameObjectWithTag("Player");
         threshold = CalculateThreshold();
         rb = followObject.GetComponent<Rigidbody2D>();
+        _isLoadingScene = false;
     }
 }
