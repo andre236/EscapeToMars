@@ -32,28 +32,32 @@ namespace Systems
             {
                 SteamUserStats.SetAchievement("ACH_ONE_LESS");
                 SteamUserStats.StoreStats();
+                Debug.Log("Menos 1: Conquista Feita!");
             }
 
             if (PlayerPrefs.GetInt("Kills") > 99)
             {
                 SteamUserStats.SetAchievement("ACH_ISGETTINGSAFE");
                 SteamUserStats.StoreStats();
+                Debug.Log("Matou 100!: Conquista Feita!");
             }
         }
 
         public void SettingAchievementsLevels()
         {
 
-            if (PlayerPrefs.GetInt("Level29") == 1)
+            if (PlayerPrefs.GetInt("Level26") == 1)
             {
                 SteamUserStats.SetAchievement("ACH_BEATING");
                 SteamUserStats.StoreStats();
+                Debug.Log("Zerou!: Finalizado o ultimo level.");
             }
 
             if (PlayerPrefs.GetInt("Level26") == 1)
             {
                 SteamUserStats.SetAchievement("ACH_HELLMOD");
                 SteamUserStats.StoreStats();
+                Debug.Log("Hellmode Liberado!: Finalizado o ultimo level.");
             }
         }
 

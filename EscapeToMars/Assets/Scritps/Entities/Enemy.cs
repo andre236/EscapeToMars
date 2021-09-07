@@ -77,13 +77,7 @@ namespace Entities
         void ToMove()
         {
             var positionsTragectorySize = _positionsTragectory.Length - 1;
-            
-            bool isMovingUp = _enemyRB.transform.position.x == _positionsTragectory[NextPosition].position.x && _enemyRB.transform.position.y < _positionsTragectory[NextPosition].position.y;
-            bool isMovingDown = _enemyRB.transform.position.x == _positionsTragectory[NextPosition].position.x && _enemyRB.transform.position.y > _positionsTragectory[NextPosition].position.y;
-            bool isMovingRight = _enemyRB.transform.position.x < _positionsTragectory[NextPosition].position.x && _enemyRB.transform.position.y == _positionsTragectory[NextPosition].position.y;
-            bool isMovingLeft = _enemyRB.transform.position.x > _positionsTragectory[NextPosition].position.x && _enemyRB.transform.position.y == _positionsTragectory[NextPosition].position.y;
 
-           
             transform.position = Vector2.MoveTowards(_enemyRB.transform.position, _positionsTragectory[NextPosition].position, MovementSpeed * Time.fixedDeltaTime);
 
             if (Vector2.Distance(_enemyRB.transform.position, _positionsTragectory[NextPosition].position) == 0)
@@ -94,36 +88,47 @@ namespace Entities
                     NextPosition = 0;
                 }
             }
-            
-            if (isMovingUp)
+
+            if (gameObject.CompareTag("Cyclop"))
             {
-                _currentAnim.SetBool("IsMovingUp", true);
-                _currentAnim.SetBool("IsMovingDown", false);
-                _currentAnim.SetBool("IsMovingRight", false);
-                _currentAnim.SetBool("IsMovingLeft", false);
+                bool isMovingUp = _enemyRB.transform.position.x == _positionsTragectory[NextPosition].position.x && _enemyRB.transform.position.y < _positionsTragectory[NextPosition].position.y;
+                bool isMovingDown = _enemyRB.transform.position.x == _positionsTragectory[NextPosition].position.x && _enemyRB.transform.position.y > _positionsTragectory[NextPosition].position.y;
+                bool isMovingRight = _enemyRB.transform.position.x < _positionsTragectory[NextPosition].position.x && _enemyRB.transform.position.y == _positionsTragectory[NextPosition].position.y;
+                bool isMovingLeft = _enemyRB.transform.position.x > _positionsTragectory[NextPosition].position.x && _enemyRB.transform.position.y == _positionsTragectory[NextPosition].position.y;
+
+
+
+                if (isMovingUp)
+                {
+                    _currentAnim.SetBool("IsMovingUp", true);
+                    _currentAnim.SetBool("IsMovingDown", false);
+                    _currentAnim.SetBool("IsMovingRight", false);
+                    _currentAnim.SetBool("IsMovingLeft", false);
+                }
+                if (isMovingDown)
+                {
+                    _currentAnim.SetBool("IsMovingUp", false);
+                    _currentAnim.SetBool("IsMovingDown", true);
+                    _currentAnim.SetBool("IsMovingRight", false);
+                    _currentAnim.SetBool("IsMovingLeft", false);
+                }
+                if (isMovingRight)
+                {
+                    _currentAnim.SetBool("IsMovingUp", false);
+                    _currentAnim.SetBool("IsMovingDown", false);
+                    _currentAnim.SetBool("IsMovingRight", true);
+                    _currentAnim.SetBool("IsMovingLeft", false);
+                }
+                if (isMovingLeft)
+                {
+                    _currentAnim.SetBool("IsMovingUp", false);
+                    _currentAnim.SetBool("IsMovingDown", false);
+                    _currentAnim.SetBool("IsMovingRight", false);
+                    _currentAnim.SetBool("IsMovingLeft", true);
+                }
             }
-            if (isMovingDown)
-            {
-                _currentAnim.SetBool("IsMovingUp", false);
-                _currentAnim.SetBool("IsMovingDown", true);
-                _currentAnim.SetBool("IsMovingRight", false);
-                _currentAnim.SetBool("IsMovingLeft", false);
-            }
-            if (isMovingRight)
-            {
-                _currentAnim.SetBool("IsMovingUp", false);
-                _currentAnim.SetBool("IsMovingDown", false);
-                _currentAnim.SetBool("IsMovingRight", true);
-                _currentAnim.SetBool("IsMovingLeft", false);
-            }
-            if (isMovingLeft)
-            {
-                _currentAnim.SetBool("IsMovingUp", false);
-                _currentAnim.SetBool("IsMovingDown", false);
-                _currentAnim.SetBool("IsMovingRight", false);
-                _currentAnim.SetBool("IsMovingLeft", true);
-            }
-            
+
+
         }
 
 
