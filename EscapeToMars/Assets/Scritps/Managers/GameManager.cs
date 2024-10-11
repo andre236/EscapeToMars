@@ -89,15 +89,14 @@ namespace Managers
         {
             if (Win)
             {
-                //int temp = WhereIam.Instance.Phase + 1;
+                int temp = WhereIam.Instance.Phase + 1;
                 ScoreManager.instance.ResetCurrentPointsPlayer();
                 AudioManager.Instance.StopCurrentBackgroundMusic();
                 AudioManager.Instance.PlayBackgroundMusic(Random.Range(1, 4));
                 Time.timeScale = 1;
                 GameStarted = false;
                 Win = false;
-                //SceneManager.LoadScene(temp);
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(temp);
             }
         }
 
