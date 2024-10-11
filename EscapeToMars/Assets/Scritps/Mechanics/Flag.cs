@@ -1,6 +1,7 @@
 ﻿using Managers;
 using Systems;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Mechanics
 {
@@ -13,15 +14,16 @@ namespace Mechanics
         {
             int tempPhase = WhereIam.Instance.Phase - 2; // 1 ( Subtract "2" for Scenes: Main Scene, Shop Scene and Level Manager Scene.)
             int tempNexPhase = WhereIam.Instance.Phase - 1; // 2
+            string nameLevel = SceneManager.GetActiveScene().name;
 
             if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA && !_isLastLevel)
             {
                 GameManager.Instance.SuccessfullyLevel(1);
                 PlayerPrefs.SetInt("Level" + tempPhase, 1);
 
-                if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 1)
+                if (PlayerPrefs.GetInt("Stars" + nameLevel) < 1)
                 {
-                    PlayerPrefs.SetInt("StarsLevel" + tempPhase, 1);
+                    PlayerPrefs.SetInt("Stars" + nameLevel, 1);
                     PlayerPrefs.SetInt("TotalStars", +1);
                 }
                 PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
@@ -31,9 +33,9 @@ namespace Mechanics
             {
                 GameManager.Instance.SuccessfullyLevel(2);
                 PlayerPrefs.SetInt("Level" + tempPhase, 1);
-                if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 2)
+                if (PlayerPrefs.GetInt("Stars" + nameLevel) < 2)
                 {
-                    PlayerPrefs.SetInt("StarsLevel" + tempPhase, 2);
+                    PlayerPrefs.SetInt("Stars" + nameLevel, 2);
                     PlayerPrefs.SetInt("TotalStars", +2);
 
                 }
@@ -44,18 +46,52 @@ namespace Mechanics
             {
                 GameManager.Instance.SuccessfullyLevel(3);
                 PlayerPrefs.SetInt("Level" + tempPhase, 1);
-                if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 3)
+                if (PlayerPrefs.GetInt("Stars" + nameLevel) < 3)
                 {
-                    PlayerPrefs.SetInt("StarsLevel" + tempPhase, 3);
+                    PlayerPrefs.SetInt("Stars" + nameLevel, 3);
                 }
 
                 PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
             }
 
-            SteamAchievement.Instance.SetAchieveOneStar();
-            SteamAchievement.Instance.SetAchieveTwoStars();
-            SteamAchievement.Instance.SetAchieveThreeStars();
-            SteamAchievement.Instance.SettingAchievementsLevels();
+            //if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA && !_isLastLevel)
+            //{
+            //    GameManager.Instance.SuccessfullyLevel(1);
+            //    PlayerPrefs.SetInt("Level" + tempPhase, 1);
+
+            //    if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 1)
+            //    {
+            //        PlayerPrefs.SetInt("StarsLevel" + tempPhase, 1);
+            //        PlayerPrefs.SetInt("TotalStars", +1);
+            //    }
+            //    PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
+            //}
+
+            //if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA + ScoreManager.instance.TotalPointsB && !_isLastLevel)
+            //{
+            //    GameManager.Instance.SuccessfullyLevel(2);
+            //    PlayerPrefs.SetInt("Level" + tempPhase, 1);
+            //    if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 2)
+            //    {
+            //        PlayerPrefs.SetInt("StarsLevel" + tempPhase, 2);
+            //        PlayerPrefs.SetInt("TotalStars", +2);
+
+            //    }
+            //    PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
+            //}
+
+            //if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA + ScoreManager.instance.TotalPointsB + ScoreManager.instance.TotalPointsC && !_isLastLevel)
+            //{
+            //    GameManager.Instance.SuccessfullyLevel(3);
+            //    PlayerPrefs.SetInt("Level" + tempPhase, 1);
+            //    if (PlayerPrefs.GetInt("StarsLevel" + tempPhase) < 3)
+            //    {
+            //        PlayerPrefs.SetInt("StarsLevel" + tempPhase, 3);
+            //    }
+
+            //    PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
+            //}
+
 
         }
 

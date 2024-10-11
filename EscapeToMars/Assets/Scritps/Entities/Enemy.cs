@@ -137,7 +137,6 @@ namespace Entities
             _currentAnim.SetBool("isDying", true);
             AudioManager.Instance.PlaySoundEffect(4);
             _player.CountKill();
-            SteamAchievement.Instance.SettingAchievementKill();
             Destroy(_enemyCollider);
             Destroy(_pointLight2D);
             StartCoroutine("CooldownDying");
