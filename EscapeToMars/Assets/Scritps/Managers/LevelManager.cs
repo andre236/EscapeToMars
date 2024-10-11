@@ -25,10 +25,6 @@ namespace Managers
         private Transform _parentButtons;
         public List<Level> LevelList;
 
-        public List<int> AllowedLevelsIndex;
-        List<GameObject> _allChildren = new List<GameObject>();
-
-
         void Awake()
         {
             Destroy(GameObject.Find("UIManager(Clone)"));
@@ -39,7 +35,6 @@ namespace Managers
         void Start()
         {
             AddToList();
-            RestrictLevels();
         }
 
         void ClickLevel(string level)
@@ -54,7 +49,7 @@ namespace Managers
         {
             foreach (Level level in LevelList)
             {
-                GameObject newLevelButton = Instantiate(_levelButton);
+                GameObject newLevelButton = Instantiate(_levelButton) as GameObject;
                 LevelButton newLevel = newLevelButton.GetComponent<LevelButton>();
                 newLevel.numberLevelTXT.text = level.LevelText;
 
@@ -92,38 +87,6 @@ namespace Managers
                 newLevelButton.transform.SetParent(_parentButtons, false);
             }
 
-        }
-
-        void RestrictLevels()
-        {
-
-            for(int buttonIndex = 0; buttonIndex < _parentButtons.childCount; buttonIndex++)
-            {
-
-                _allChildren.Add(_parentButtons.GetChild(buttonIndex).gameObject);
-            }
-
-            foreach (GameObject level in _allChildren)
-            {
-                foreach (int levelIndex in AllowedLevelsIndex)
-                {
-                    if (level.GetComponentInChildren<Text>().text == levelIndex.ToString())
-                    {
-                        level.GetComponent<Button>().interactable = true;
-                        level.GetComponentInChildren<Text>().enabled = true;
-                        break;
-                    }
-                    else
-                    {
-                        level.GetComponent<Button>().interactable = false;
-                        level.GetComponentInChildren<Text>().enabled = false;
-
-
-                    }
-
-
-                }
-            }
         }
 
         IEnumerator StartingTransition(string level)
