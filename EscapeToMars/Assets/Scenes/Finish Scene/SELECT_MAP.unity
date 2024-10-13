@@ -1192,6 +1192,7 @@ MonoBehaviour:
     ActiveTXT: 0
     Unlocked: 0
     Stars: 0
+  NumberAllowedLevels: 10000000160000001c000000
 --- !u!4 &885495399
 Transform:
   m_ObjectHideFlags: 0
@@ -1512,6 +1513,7 @@ MonoBehaviour:
     ActiveTXT: 0
     Unlocked: 0
     Stars: 0
+  NumberAllowedLevels: 040000000600000009000000
 --- !u!4 &1095092938
 Transform:
   m_ObjectHideFlags: 0

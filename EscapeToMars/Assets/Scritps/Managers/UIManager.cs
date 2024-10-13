@@ -84,7 +84,9 @@ public class UIManager : MonoBehaviour
 
             _uiWinStarsAnim = _uiWinLevelGO.GetComponent<Animator>();
 
-            _nextButton.onClick.AddListener(GameManager.Instance.NextPhase);
+            //_nextButton.onClick.AddListener(GameManager.Instance.NextPhase);
+            _nextButton.onClick.AddListener(GameManager.Instance.GoToLevelSelect);
+
             _restartWinButton.onClick.AddListener(GameManager.Instance.PlayAgainPhase);
             _restartLoseButton.onClick.AddListener(GameManager.Instance.PlayAgainPhase);
             _restartPauseButton.onClick.AddListener(GameManager.Instance.PlayAgainPhase);

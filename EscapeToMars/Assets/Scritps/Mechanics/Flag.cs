@@ -24,7 +24,8 @@ namespace Mechanics
                     PlayerPrefs.SetInt("StarsLevel" + tempPhase, 1);
                     PlayerPrefs.SetInt("TotalStars", +1);
                 }
-                PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
+
+                //PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
             }
 
             if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA + ScoreManager.instance.TotalPointsB && !_isLastLevel)
@@ -37,7 +38,7 @@ namespace Mechanics
                     PlayerPrefs.SetInt("TotalStars", +2);
 
                 }
-                PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
+                //PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
             }
 
             if (collision.gameObject.CompareTag("Player") && ScoreManager.instance.CurrentPointsPlayer >= ScoreManager.instance.TotalPointsA + ScoreManager.instance.TotalPointsB + ScoreManager.instance.TotalPointsC && !_isLastLevel)
@@ -49,13 +50,9 @@ namespace Mechanics
                     PlayerPrefs.SetInt("StarsLevel" + tempPhase, 3);
                 }
 
-                PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
+                //PlayerPrefs.SetInt("Level" + tempNexPhase, 1);
             }
 
-            SteamAchievement.Instance.SetAchieveOneStar();
-            SteamAchievement.Instance.SetAchieveTwoStars();
-            SteamAchievement.Instance.SetAchieveThreeStars();
-            SteamAchievement.Instance.SettingAchievementsLevels();
 
         }
 

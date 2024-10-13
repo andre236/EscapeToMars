@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace Managers
 {
@@ -23,7 +24,11 @@ namespace Managers
         private GameObject _levelButton;
         [SerializeField]
         private Transform _parentButtons;
+
+        List<GameObject> _allLevelGameObjects = new List<GameObject>();
+
         public List<Level> LevelList;
+        public List<int> NumberAllowedLevels = new List<int>();
 
         void Awake()
         {
@@ -35,7 +40,10 @@ namespace Managers
         void Start()
         {
             AddToList();
+            Invoke(nameof(RestrictLevels), 0.01f);
         }
+
+
 
         void ClickLevel(string level)
         {
@@ -49,7 +57,7 @@ namespace Managers
         {
             foreach (Level level in LevelList)
             {
-                GameObject newLevelButton = Instantiate(_levelButton) as GameObject;
+                GameObject newLevelButton = Instantiate(_levelButton);
                 LevelButton newLevel = newLevelButton.GetComponent<LevelButton>();
                 newLevel.numberLevelTXT.text = level.LevelText;
 
@@ -87,6 +95,39 @@ namespace Managers
                 newLevelButton.transform.SetParent(_parentButtons, false);
             }
 
+        }
+
+        [ContextMenu(nameof(RestrictLevels))]
+        void RestrictLevels()
+        {
+
+            for (int buttonIndex = 0; buttonIndex < _parentButtons.childCount; buttonIndex++)
+            {
+
+                _allLevelGameObjects.Add(_parentButtons.GetChild(buttonIndex).gameObject);
+            }
+
+            foreach (GameObject level in _allLevelGameObjects)
+            {
+                foreach (int levelIndex in NumberAllowedLevels)
+                {
+                    if (level.GetComponentInChildren<Text>().text == levelIndex.ToString())
+                    {
+                        level.GetComponent<Button>().interactable = true;
+                        level.GetComponentInChildren<Text>().enabled = true;
+                        break;
+                    }
+                    else
+                    {
+                        level.GetComponent<Button>().interactable = false;
+                        level.GetComponentInChildren<Text>().enabled = false;
+
+
+                    }
+
+
+                }
+            }
         }
 
         IEnumerator StartingTransition(string level)
