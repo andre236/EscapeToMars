@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Vector2 _raycastOffset;
 
+    private Vector2 _startTouchPosition;
+    private Vector2 _endTouchPosition;
+
+
     private Player _player;
 
     public int MovementSpeed { get; private set; } = 5;
@@ -198,6 +202,61 @@ public class PlayerMovement : MonoBehaviour
             MoveToDirection("right");
             RequestToMoveRight = false;
         }
+
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            _startTouchPosition = Input.GetTouch(0).position;
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            _endTouchPosition = Input.GetTouch(0).position;
+            float distanceXtouch = Mathf.Abs(_endTouchPosition.x - _startTouchPosition.x);
+            float distanceYtouch = Mathf.Abs(_endTouchPosition.y - _startTouchPosition.y);
+
+            if(distanceXtouch > distanceYtouch)
+            {
+                if (_endTouchPosition.x < _startTouchPosition.x && ConditionsPlayerToMove)
+                {
+                    RequestToMoveLeft = true;
+                    RequestToMoveRight = false;
+                    RequestToMoveUp = false;
+                    RequestToMoveDown = false;
+                }
+
+                if (_endTouchPosition.x > _startTouchPosition.x && ConditionsPlayerToMove)
+                {
+                    RequestToMoveLeft = false;
+                    RequestToMoveRight = true;
+                    RequestToMoveUp = false;
+                    RequestToMoveDown = false;
+                }
+            }
+            else
+            {
+                if (_endTouchPosition.y < _startTouchPosition.y && ConditionsPlayerToMove)
+                {
+                    RequestToMoveLeft = false;
+                    RequestToMoveRight = false;
+                    RequestToMoveUp = false;
+                    RequestToMoveDown = true;
+                }
+
+                if (_endTouchPosition.y > _startTouchPosition.y && ConditionsPlayerToMove)
+                {
+                    RequestToMoveLeft = false;
+                    RequestToMoveRight = false;
+                    RequestToMoveUp = true;
+                    RequestToMoveDown = false;
+                }
+            }
+
+
+
+
+
+        }
+
 
 
     }
